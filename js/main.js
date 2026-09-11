@@ -1079,7 +1079,9 @@ function startCountdown(targetISO) {
 // Run AFTER the page is loaded
 document.addEventListener("DOMContentLoaded", () => {
   // Retreat start (ISO, with timezone offset for NY)
-  startCountdown("2026-09-04T15:00:00-04:00");
+  // Memorial Day Weekend 2027. Saturday start time is a placeholder pending the
+  // final itinerary - update the hour here once the schedule is confirmed.
+  startCountdown("2027-05-29T09:00:00-04:00");
 });
 
 // ===============================
@@ -1615,9 +1617,69 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // ===============================
-// Retreat: Shared Room Discount Popup
+// Retreat: "Sign up for retreat information" -> Sender.net
+//
+// Posts to the RetreatSignupCode.gs web app, which holds the Sender API key in
+// Script Properties and adds the address to the 2026, Mahjong and Retreats
+// groups. Retreats-only: exits immediately if #retreatInfoForm is absent.
+//
+// Uses no-cors-free plain fetch like the other forms on the site; Apps Script
+// returns JSON and permits cross-origin GET/POST on /exec.
+// ===============================
+(function () {
+  const form = document.getElementById("retreatInfoForm");
+  if (!form) return;
+
+  const thanks = document.getElementById("retreatInfoThanks");
+  const errorMsg = document.getElementById("retreatInfoError");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    if (thanks) thanks.classList.add("hidden");
+    if (errorMsg) errorMsg.classList.add("hidden");
+
+    const btn = form.querySelector("button[type='submit']");
+    if (typeof hcSubmitLoading === "function") hcSubmitLoading(btn, true);
+
+    try {
+      const res = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      });
+
+      // The script answers { ok: true } even for blocked bots, on purpose.
+      const data = await res.json().catch(() => ({ ok: res.ok }));
+
+      if (data && data.ok) {
+        form.reset();
+        if (thanks) thanks.classList.remove("hidden");
+      } else {
+        if (errorMsg) errorMsg.classList.remove("hidden");
+      }
+    } catch (err) {
+      if (errorMsg) errorMsg.classList.remove("hidden");
+    } finally {
+      if (typeof hcSubmitLoading === "function") hcSubmitLoading(btn, false);
+    }
+  });
+})();
+
+
+// ===============================
+// Retreat: Mahjong Tournaments Popup
 // Fires 30s after load, once per browser session.
 // Retreats-only: exits immediately if #roomDiscountPopup is absent.
+//
+// The roomDiscount* ids are historical - this used to promote the shared-room
+// discount, which ended when the 2027 retreat became commuter-only. The ids were
+// left alone so this block did not need rewiring; only the markup changed.
 // ===============================
 (function () {
   const popup = document.getElementById("roomDiscountPopup");
@@ -1664,9 +1726,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (closeBtn) closeBtn.addEventListener("click", closePopup);
 
-  // "Book with a friend" is an <a href="#interest"> — close, then let the
-  // anchor jump run. The collapsible-form block above also binds this link,
-  // so the signup panel opens on its own.
+  // "See upcoming events" is an <a href="/events"> — close, then let the
+  // navigation run. (It was previously "#interest", an in-page jump that the
+  // collapsible-form block also bound; that no longer applies.)
   if (bookBtn) bookBtn.addEventListener("click", closePopup);
 
   // Click the backdrop (not the card) to dismiss.
