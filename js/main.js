@@ -563,7 +563,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Retreat interest form Thank You
+  // Retreat booking form -> Guest List sheet -> Stripe Payment Link
+  //
+  // The flow, and why it is in this order:
+  //   1. POST the form to Code.gs, which writes the row and answers
+  //      { ok: true, reference: "HC-XXXXXXXX" }.
+  //   2. Send the browser to the Stripe Payment Link carrying that reference as
+  //      client_reference_id.
+  //   3. Stripe's webhook posts back to StripeWebhookCode.gs, which finds the
+  //      row with that reference and sets Payment status to Paid.
+  //
+  // The sheet write happens first on purpose: if someone abandons the Stripe
+  // page we still have their details and can follow up. The reverse order would
+  // lose them entirely.
+  //
+  // TODO(KP): replace with the live Payment Link from Stripe Dashboard >
+  // Payment Links. Until then the constant below is a placeholder and the
+  // redirect is skipped - the form still saves and still says thank you.
+  const HC_RETREAT_PAYMENT_LINK = "https://buy.stripe.com/REPLACE_ME";
+
 (function () {
   const form = document.getElementById("retreatInterestForm");
   const thanks = document.getElementById("retreatInterestThanks");
@@ -587,6 +605,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const submitBtn = form.querySelector("button[type='submit']");
     hcSubmitLoading(submitBtn, true);
 
+    // Read the email before reset() blanks it - Stripe prefills with it.
+    const emailField = form.querySelector("#ri-email");
+    const email = emailField ? emailField.value : "";
+
     try {
       const response = await fetch(form.action, {
         method: form.method,
@@ -595,8 +617,27 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       if (response.ok) {
+        // The reference is the only thing tying this signup to the payment, so
+        // a response without one means we cannot reconcile later. Still show
+        // the thank you - their details did save - but do not hand them to
+        // Stripe with nothing attached.
+        const data = await response.json().catch(() => null);
+        const reference = data && data.ok ? data.reference : null;
+
         form.reset();
         if (thanks) thanks.classList.remove("hidden");
+
+        if (reference && HC_RETREAT_PAYMENT_LINK.indexOf("REPLACE_ME") === -1) {
+          const url = new URL(HC_RETREAT_PAYMENT_LINK);
+          url.searchParams.set("client_reference_id", reference);
+          if (email) url.searchParams.set("prefilled_email", email);
+
+          // Short pause so the thank-you registers before the page changes.
+          window.setTimeout(function () {
+            window.location.href = url.toString();
+          }, 1200);
+          return;
+        }
       } else {
         if (errorMsg) errorMsg.classList.remove("hidden");
       }
@@ -608,7 +649,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 })();
 
-// Community email signup → Sender via subscribe.php
+// Community email signup → Sender via CommunityCode.gs
 const communityEmailForm = document.getElementById("communityEmailForm");
 const communityThankYou = document.getElementById("communityThankYou");
 const communityError = document.getElementById("communityError");
@@ -635,10 +676,13 @@ if (communityEmailForm) {
         },
       });
 
+      // A non-JSON body (a CDN error page, an Apps Script crash page) throws
+      // here and lands in the catch, which is the right outcome - let the
+      // parse fail rather than swallowing it.
       const result = await response.json();
 
-      if (!response.ok || !result.success) {
-        throw new Error(result.message || "Signup failed");
+      if (!response.ok || !result.ok) {
+        throw new Error(result.error || "Signup failed");
       }
 
       communityEmailForm.reset();
@@ -658,16 +702,14 @@ if (communityEmailForm) {
   });
 }
 
-  // 11. Facility Event Form submission feedback
-  const facilityForm = qs("#eventApplicationForm");
-  const facilityThankYou = qs("#thankYouMsg");
-  if (facilityForm && facilityThankYou) {
-    facilityForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      facilityForm.reset();
-      facilityThankYou.classList.remove("hidden");
-    });
-  }
+  // 11. (removed) Facility Event Form submission feedback
+  //
+  // Bound to #eventApplicationForm, which no longer exists on any page. The
+  // handler called preventDefault(), reset the form and showed a thank-you
+  // without sending anything anywhere - so if that form is ever reintroduced,
+  // this would silently discard every submission while telling people it
+  // worked. Deleted rather than left dormant. Any replacement form should post
+  // to an Apps Script like the other six.
 
   // 12. Expanding Stripes on Hover Animation
   qsa(".stripe-container").forEach((stripe) => {
@@ -1673,13 +1715,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // ===============================
-// Retreat: Mahjong Tournaments Popup
+// Retreat: "Get retreat updates" Popup
 // Fires 30s after load, once per browser session.
 // Retreats-only: exits immediately if #roomDiscountPopup is absent.
 //
-// The roomDiscount* ids are historical - this used to promote the shared-room
-// discount, which ended when the 2027 retreat became commuter-only. The ids were
-// left alone so this block did not need rewiring; only the markup changed.
+// The roomDiscount* ids are historical - this started as the shared-room
+// discount, then briefly promoted mahjong tournaments. The ids were left alone
+// each time so this block never needed rewiring; only the markup changed.
 // ===============================
 (function () {
   const popup = document.getElementById("roomDiscountPopup");
@@ -1726,9 +1768,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (closeBtn) closeBtn.addEventListener("click", closePopup);
 
-  // "See upcoming events" is an <a href="/events"> — close, then let the
-  // navigation run. (It was previously "#interest", an in-page jump that the
-  // collapsible-form block also bound; that no longer applies.)
+  // "Keep me posted" is an <a href="#retreatInfoForm"> — close, then let the
+  // in-page jump run, landing on the email-capture card in the left column.
   if (bookBtn) bookBtn.addEventListener("click", closePopup);
 
   // Click the backdrop (not the card) to dismiss.

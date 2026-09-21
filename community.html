@@ -191,23 +191,35 @@
 
       <!-- Right: Form -->
       <div class="md:col-span-5">
+        <!-- Backed by CommunityCode.gs. Replaced /subscribe.php, which lived only
+             on the server, was never in the repo, and held the Sender API key in
+             plain text on disk. The key now sits in that script's Script
+             Properties and the browser only ever talks to a Google URL. -->
         <form
           id="communityEmailForm"
-          action="/subscribe.php"
+          action="https://script.google.com/macros/s/AKfycbw-lLIggFdE1UX0lyxDMkUNb0k2xABe3W22roy846T7WtMcPWpWEk5rCW9ZiJO-9ivV/exec"
           method="POST"
           class="flex flex-col sm:flex-row gap-3"
         >
           <input type="hidden" name="source" value="Community Signup" />
 
-          <!-- Honeypot spam trap: real users will not see this -->
-          <input
-            type="text"
-            name="website"
-            autocomplete="off"
-            tabindex="-1"
-            class="hidden"
-            aria-hidden="true"
-          />
+          <!-- Must match SHARED_SECRET in CommunityCode.gs. Not secret from the
+               user (it is in page source) - it only deters drive-by bots. -->
+          <input type="hidden" name="token" value="QqkEaf3qu03W5UbOkDDO5XooGtJXGC5l" />
+
+          <!-- Anti-spam honeypot. Off-screen rather than display:none, which the
+               better form-fillers know to skip. Named "fax" on purpose: "website"
+               is a real, visible field on the vendor and partnership forms, and
+               reusing it as a trap would throw away genuine submissions. -->
+          <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+            <input type="text" name="fax" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <!-- Seconds this page had been open when submit fired. main.js fills it
+               in; a bot posting the raw form leaves it empty, which the script
+               allows through rather than risk dropping a real signup from a
+               broken JS load. Anything under 4 seconds is not a person typing. -->
+          <input type="hidden" name="formElapsed" value="" />
 
           <input
             type="email"
