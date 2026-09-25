@@ -577,10 +577,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // page we still have their details and can follow up. The reverse order would
   // lose them entirely.
   //
-  // TODO(KP): replace with the live Payment Link from Stripe Dashboard >
-  // Payment Links. Until then the constant below is a placeholder and the
-  // redirect is skipped - the form still saves and still says thank you.
-  const HC_RETREAT_PAYMENT_LINK = "https://buy.stripe.com/REPLACE_ME";
+  // The $500 Payment Link from Stripe Dashboard > Payment Links.
+  const HC_RETREAT_PAYMENT_LINK = "https://book.stripe.com/4gM7sKaotfipg9b4cVgnK0q";
 
 (function () {
   const form = document.getElementById("retreatInterestForm");
@@ -627,7 +625,7 @@ document.addEventListener("DOMContentLoaded", function () {
         form.reset();
         if (thanks) thanks.classList.remove("hidden");
 
-        if (reference && HC_RETREAT_PAYMENT_LINK.indexOf("REPLACE_ME") === -1) {
+        if (reference) {
           const url = new URL(HC_RETREAT_PAYMENT_LINK);
           url.searchParams.set("client_reference_id", reference);
           if (email) url.searchParams.set("prefilled_email", email);
