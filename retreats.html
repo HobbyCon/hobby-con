@@ -1160,7 +1160,7 @@
               </button>
 
               <p id="retreatInterestThanks" class="hidden text-sm font-semibold text-emerald-700">
-                Thanks! We've received your signup.
+                Thanks! We've received your signup. You will be redirected to our payment portal to finalize the booking.
               </p>
               <p id="retreatInterestError" class="hidden text-sm font-semibold text-red-600">
                 Something went wrong. Please try again, or email info@hobbycon.com.
@@ -1317,52 +1317,6 @@
 <div id="lightbox" class="lb-overlay" aria-hidden="true">
   <button id="lightboxClose" class="lb-close" type="button" aria-label="Close">✕</button>
   <img id="lightboxImg" class="lb-img" alt="">
-</div>
-
-<!-- Shared Room Discount Popup (30s, once per session) -->
-<div
-  id="roomDiscountPopup"
-  class="hidden fixed inset-0 z-[9998] items-center justify-center p-5 bg-slate-900/70"
-  role="dialog"
-  aria-modal="true"
-  aria-labelledby="roomDiscountTitle"
->
-  <div class="hc-card w-full max-w-md rounded-3xl border border-slate-200 bg-white p-7 md:p-8 shadow-xl text-center">
-    <div class="text-xs uppercase tracking-wide text-purple-600 font-semibold">
-      Memorial Day Weekend 2027
-    </div>
-
-    <h3 id="roomDiscountTitle" class="mt-2 text-xl font-bold text-slate-900">
-      Not ready to book?
-    </h3>
-
-    <p class="mt-3 text-2xl font-bold text-purple-600 leading-relaxed">
-      Get retreat updates
-    </p>
-
-    <p class="mt-3 text-slate-700 leading-relaxed">
-      Leave your email and we&rsquo;ll keep you posted on this retreat and the
-      ones after it
-    </p>
-
-    <div class="mt-6 flex flex-col sm:flex-row gap-3">
-      <button
-        type="button"
-        id="roomDiscountClose"
-        class="hc-btn hc-btn-ghost px-6 py-3 inline-flex items-center justify-center gap-2"
-      >
-        Maybe later
-      </button>
-
-      <a
-        href="#retreatInfoForm"
-        id="roomDiscountBook"
-        class="hc-btn hc-btn-primary px-6 py-3 inline-flex items-center justify-center gap-2"
-      >
-        Keep me posted <i data-feather="arrow-right" class="w-4 h-4"></i>
-      </a>
-    </div>
-  </div>
 </div>
 
     <!-- Keep your existing script setup -->
