@@ -11,7 +11,7 @@ Reference for adding and retiring event cards. The site is finished and correct 
 3. **`index.html` holds exactly 3 event cards. Never 2, never 4.** `.event-grid` is `grid-template-columns: repeat(3, 1fr)` (style.css:557) and the dot count is hardcoded — a 4th card breaks the layout and the mobile carousel. Adding to index.html always means *replacing* one.
 4. **Never reformat a file.** No prettier, no reindenting, no collapsing multi-line class attributes. Diffs should contain only the cards being added or moved.
 5. **Match the surrounding whitespace,** including the irregular leading spaces on the `<!-- Featured: ... -->` comments in events.html. They vary card to card. Copy the neighbour.
-6. **Do not touch** `style.css`, `js/main.js`, `.cpanel.yml`, `.htaccess`, `api/`.
+6. **Do not touch** `style.css`, `js/main.js`, `.cpanel.yml`, `.htaccess`, `vercel.json`.
 7. When anything is ambiguous, ask. Do not infer event details, times, locations, or URLs.
 
 ---
@@ -223,4 +223,27 @@ grep -c '<button class="event-dot' index.html                                   
 
 ## Deploy
 
-Unchanged and manual: GitHub Desktop push → cPanel → Git Version Control → Update from Remote → Deploy HEAD Commit. `.cpanel.yml` copies the repo root to `public_html`. Do not modify it.
+**Mid-migration to Vercel. Read both sections and check which one is live before deploying.**
+
+### Current — cPanel (still serving hobbycon.com until DNS cuts over)
+
+Manual: GitHub Desktop push → cPanel → Git Version Control → Update from Remote → Deploy HEAD Commit. `.cpanel.yml` copies the repo root to `public_html`. Do not modify it.
+
+Two traps, both of which have already cost real time:
+
+- **Deploy after you commit, not before.** A deploy run between commits ships a half-finished state. Check that the commit you want is actually HEAD first.
+- **The site sits behind Sucuri, which caches assets at the edge.** A correct deploy can still serve a stale `js/main.js` for ages. Browser cache clearing does nothing — the stale copy is not local. To verify what is actually live, request the file with a query string, which misses the Sucuri cache:
+  `https://hobbycon.com/js/main.js?v=1` — grep it for a string you just added. If it's stale, clear the cache in GoDaddy → Website Security → Performance.
+
+### After cutover — Vercel
+
+Push to `main` and Vercel builds automatically. No dashboard step, no cache clearing.
+
+`vercel.json` at the repo root replaces `.htaccess`: `cleanUrls: true` handles both the `.html` → clean-URL redirect and serving `/retreats` from `retreats.html`, and the 90 vanity/typo redirects are listed under `redirects`. HTTPS and the branded `404.html` are automatic.
+
+Once DNS points at Vercel and the site is confirmed good, delete `.cpanel.yml` and `.htaccess` — both are dead weight at that point, and leaving them invites someone to follow the wrong instructions.
+
+**Still open after the transfer:**
+
+1. **Force non-www.** `.htaccess` redirected `www.hobbycon.com` → `hobbycon.com`. `vercel.json` cannot do this. Add both domains in the Vercel project's Domains settings and set `www` to redirect to the apex, or the site answers on two hostnames.
+2. **Retire Sucuri.** Once DNS moves, Sucuri is out of the request path. Confirm whether it is also providing DNS and SSL, since both move with it.
