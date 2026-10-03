@@ -9,6 +9,7 @@ Reference for adding and retiring event cards. The site is finished and correct 
 1. **Do not refactor, restyle, tidy, or "improve" anything.** Not the CSS, not the HTML, not the indentation, not the inconsistencies. The inconsistencies listed in this file are intentional or accepted. Leave them.
 2. **Do not touch existing cards** except to move a card between sections exactly as described under *Retiring an event*.
 3. **`index.html` holds exactly 3 event cards. Never 2, never 4.** `.event-grid` is `grid-template-columns: repeat(3, 1fr)` (style.css:557) and the dot count is hardcoded — a 4th card breaks the layout and the mobile carousel. Adding to index.html always means *replacing* one.
+3a. **Those 3 cards are the soonest 3 upcoming events, left to right in date order.** The homepage is a "what's next" shelf, not a highlights reel. When an event is retired, the replacement is the next event by date — which is usually *not* the one you just removed, and usually means **shifting the other cards left**, not swapping in place. A later event does not jump the queue. After any edit, read the three badge dates top to bottom and confirm they ascend.
 4. **Never reformat a file.** No prettier, no reindenting, no collapsing multi-line class attributes. Diffs should contain only the cards being added or moved.
 5. **Match the surrounding whitespace,** including the irregular leading spaces on the `<!-- Featured: ... -->` comments in events.html. They vary card to card. Copy the neighbour.
 6. **Do not touch** `style.css`, `js/main.js`, `.cpanel.yml`, `.htaccess`, `vercel.json`.
@@ -157,7 +158,29 @@ No indentation — these cards sit flush at column 0. Match that.
 
 ### 3. `index.html` — swap, never append
 
-Still exactly 3 cards. **Ask which of the 3 to replace** unless told. Default suggestion: the one whose date is soonest-past. Replace only the contents of that one `<a>` block, in `.event-grid` at line ~259. Leave the three `<button class="event-dot">` elements at line ~315 completely alone — count does not change.
+Still exactly 3 cards, and they must end up in **ascending date order**.
+
+Work it out before editing, not after:
+
+1. List every upcoming event across the site with its date (`tickets.html` is
+   the most complete list).
+2. Sort by date. The soonest 3 are what belongs on the homepage.
+3. Compare against what is there now, and make the cards match that list in
+   that order.
+
+This usually means **shifting cards left**, not editing one in place. If the
+retired event was in slot 1, slots 2 and 3 move up and the new event lands in
+slot 3. Dropping a later event straight into slot 1 leaves the homepage out of
+order — an easy mistake, because the diff looks small and clean.
+
+An event further out does not go on the homepage just because it was the most
+recently created. It waits its turn.
+
+Leave the three `<button class="event-dot">` elements at line ~315 completely
+alone — the count never changes.
+
+**Check when done:** read the three badge dates top to bottom. They must
+ascend. If they do not, the order is wrong regardless of how tidy the diff is.
 
 ```html
     <a href="{{EVENTBRITE_URL}}"
@@ -208,6 +231,7 @@ Remove the card outright, including its `<!-- Event: ... -->` comment. index.htm
 
 - `events.html` upcoming grid: card count is even, or the last row will look lopsided at `sm:grid-cols-2`.
 - `index.html`: exactly 3 `<a class="hc-card ...">` inside `.event-grid`, exactly 3 `.event-dot` buttons.
+- `index.html`: the 3 badge dates ascend, and they are the soonest 3 upcoming events on the site. Run the order check below.
 - Every `images/...` path referenced actually exists.
 - Every Eventbrite URL appears twice per card in shapes B, C, D — image link and CTA — and both are identical.
 - `git diff` contains only added/moved cards. Any change to `style.css`, `js/main.js`, or unrelated markup means something went wrong — revert it.
@@ -218,6 +242,22 @@ Quick check:
 grep -c 'hc-card bg-white border border-slate-200 rounded-3xl shadow-sm overflow-hidden block' index.html   # must be 3
 grep -c '<button class="event-dot' index.html                                                              # must be 3
 ```
+
+Order check — homepage cards, in the order they appear:
+
+```bash
+sed -n '/event-grid mt-6/,/event-dot/p' index.html \
+  | grep -E 'whitespace-nowrap">|<h3' \
+  | sed -E 's/.*whitespace-nowrap">([^<]+).*/  DATE : \1/; s/.*<h3[^>]*>([^<]*).*/TITLE: \1/'
+```
+
+Compare against every upcoming date on the site:
+
+```bash
+grep -oE 'whitespace-nowrap">[^<]+' tickets.html | sed 's/whitespace-nowrap">//'
+```
+
+The homepage list must be the first 3 of that list, in the same order.
 
 ---
 
