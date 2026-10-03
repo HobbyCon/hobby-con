@@ -246,20 +246,28 @@ handles both the `.html` → clean-URL redirect and serving `/retreats` from
 HTTPS and the branded `404.html` are automatic. Do not edit `vercel.json`
 without need — it was verified 1:1 against the old `.htaccess`.
 
-### Git remote
+### Git access — one key per person, per machine
 
-The repo pushes over SSH using a HobbyCon-only key, so a push cannot go out
-under another GitHub account:
+Everyone pushes with their **own** GitHub account and their **own** SSH key.
+Keys are never shared, and the remote URL is a per-machine setting, not a
+property of the repo — so what works on one laptop will not necessarily work
+on another.
 
-```
-origin = git@github-hobbycon:HobbyCon/hobby-con.git
-```
+Recommended setup on each machine, especially if that person also uses GitHub
+for other work:
 
-`github-hobbycon` is a Host alias in `~/.ssh/config` pointing at
-`~/.ssh/id_hobbycon`. If a push ever fails with a permissions error, check
-that alias is intact rather than switching the remote back to HTTPS — HTTPS
-uses the shared macOS keychain credential and can authenticate as the wrong
-account.
+1. Generate a key used only for HobbyCon.
+2. Give it a Host alias in `~/.ssh/config` with `IdentitiesOnly yes`, so the
+   machine cannot fall back to a different account's key.
+3. Point this repo's `origin` at that alias.
+
+The reason is the failure mode: an HTTPS remote authenticates with whatever
+single GitHub credential macOS has cached, which is shared across every repo
+on the machine. On a computer with more than one GitHub account that can
+push, or commit, as the wrong one.
+
+If a push fails with a permissions error, check the key and alias on that
+machine first. Do not "fix" it by switching the remote to HTTPS.
 
 ### If a change does not appear on hobbycon.com
 
