@@ -1,0 +1,11 @@
+# Files that live in the repo but must not be served on the public site.
+# These stay in git — Claude Code and anyone cloning still gets them.
+
+CLAUDE.md
+README.md
+.cpanel.yml
+.htaccess
+.vscode/
+Claude outputs/
+_to_delete/
+.DS_Store
