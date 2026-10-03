@@ -223,27 +223,62 @@ grep -c '<button class="event-dot' index.html                                   
 
 ## Deploy
 
-**Mid-migration to Vercel. Read both sections and check which one is live before deploying.**
+**Push to `main`. Vercel builds automatically.** No dashboard step, no cPanel,
+nothing else to run. A deploy is usually live in under a minute.
 
-### Current — cPanel (still serving hobbycon.com until DNS cuts over)
+```bash
+git add -A && git commit -m "your message" && git push
+```
 
-Manual: GitHub Desktop push → cPanel → Git Version Control → Update from Remote → Deploy HEAD Commit. `.cpanel.yml` copies the repo root to `public_html`. Do not modify it.
+### How the site is served
 
-Two traps, both of which have already cost real time:
+```
+visitor → DNS (GoDaddy) → 192.124.249.20 Sucuri → 216.198.79.1 Vercel
+```
 
-- **Deploy after you commit, not before.** A deploy run between commits ships a half-finished state. Check that the commit you want is actually HEAD first.
-- **The site sits behind Sucuri, which caches assets at the edge.** A correct deploy can still serve a stale `js/main.js` for ages. Browser cache clearing does nothing — the stale copy is not local. To verify what is actually live, request the file with a query string, which misses the Sucuri cache:
-  `https://hobbycon.com/js/main.js?v=1` — grep it for a string you just added. If it's stale, clear the cache in GoDaddy → Website Security → Performance.
+Sucuri sits in front as a WAF/CDN; Vercel is the origin. DNS is at GoDaddy
+(`ns31`/`ns32.domaincontrol.com`). Vercel project `hobby-con`, account
+`hellohobbycon@gmail.com`.
 
-### After cutover — Vercel
+`vercel.json` at the repo root replaces the old `.htaccess`. `cleanUrls: true`
+handles both the `.html` → clean-URL redirect and serving `/retreats` from
+`retreats.html`. The 90 vanity and typo redirects live under `redirects`.
+HTTPS and the branded `404.html` are automatic. Do not edit `vercel.json`
+without need — it was verified 1:1 against the old `.htaccess`.
 
-Push to `main` and Vercel builds automatically. No dashboard step, no cache clearing.
+### Git remote
 
-`vercel.json` at the repo root replaces `.htaccess`: `cleanUrls: true` handles both the `.html` → clean-URL redirect and serving `/retreats` from `retreats.html`, and the 90 vanity/typo redirects are listed under `redirects`. HTTPS and the branded `404.html` are automatic.
+The repo pushes over SSH using a HobbyCon-only key, so a push cannot go out
+under another GitHub account:
 
-Once DNS points at Vercel and the site is confirmed good, delete `.cpanel.yml` and `.htaccess` — both are dead weight at that point, and leaving them invites someone to follow the wrong instructions.
+```
+origin = git@github-hobbycon:HobbyCon/hobby-con.git
+```
 
-**Still open after the transfer:**
+`github-hobbycon` is a Host alias in `~/.ssh/config` pointing at
+`~/.ssh/id_hobbycon`. If a push ever fails with a permissions error, check
+that alias is intact rather than switching the remote back to HTTPS — HTTPS
+uses the shared macOS keychain credential and can authenticate as the wrong
+account.
 
-1. **Force non-www.** `.htaccess` redirected `www.hobbycon.com` → `hobbycon.com`. `vercel.json` cannot do this. Add both domains in the Vercel project's Domains settings and set `www` to redirect to the apex, or the site answers on two hostnames.
-2. **Retire Sucuri.** Once DNS moves, Sucuri is out of the request path. Confirm whether it is also providing DNS and SSL, since both move with it.
+### If a change does not appear on hobbycon.com
+
+The deploy almost certainly worked; Sucuri is caching. It has been observed
+holding pages for ~21 hours.
+
+1. Check `https://hobby-con.vercel.app/<page>` — if the change is there,
+   Vercel is fine and it is purely a cache issue.
+2. Request the file with a query string to bypass Sucuri's cache:
+   `https://hobbycon.com/js/main.js?v=1` — a different URL is a different
+   cache key, so this fetches fresh.
+3. Clear the cache in GoDaddy → Website Security → Performance.
+
+Browser cache clearing and Incognito do **not** help. The stale copy is at
+Sucuri's edge, not on your machine. This has cost hours twice; check Vercel
+first, always.
+
+### Legacy files
+
+`.cpanel.yml` and `.htaccess` are dead — cPanel no longer serves the site.
+They are kept only as a reference until Sucuri is retired. Do not follow the
+cPanel deploy steps anywhere; they do nothing now.
