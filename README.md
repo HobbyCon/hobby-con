@@ -2,15 +2,16 @@
 
 This repository contains the official website for **HobbyCon**, a curated, community-driven convention designed to help people discover, explore, and deepen their engagement with niche hobbies.
 
-The site is built with **HTML, Tailwind CSS, and JavaScript**.
+The site is static **HTML, Tailwind CSS, and JavaScript**. There is no build step and no database.
 
-The website code is stored in GitHub and deployed through **GoDaddy cPanel Git Version Control**.
+Code lives in GitHub and deploys automatically to **Vercel** on every push to `main`.
+
+> **Procedures for adding and retiring event cards are in `CLAUDE.md`, not here.**
+> That file is the working reference for day-to-day content edits.
 
 ---
 
 ## 🌐 Live Site
-
-Live website:
 
 ```text
 https://hobbycon.com
@@ -19,583 +20,287 @@ https://hobbycon.com
 GitHub repository:
 
 ```text
-https://github.com/kparrish33/hobby-con
+https://github.com/HobbyCon/hobby-con
+```
+
+Vercel preview (always current, useful for checking whether a change deployed):
+
+```text
+https://hobby-con.vercel.app
 ```
 
 ---
 
 ## 🧱 Project Structure
 
-The website files may include:
-
 ```text
 index.html
 events.html
+retreats.html
+tickets.html
 vendors.html
 community.html
 contact.html
-tickets.html
+news.html
+privacy.html
+terms.html
+refund-policy.html
+shipping-policy.html
+404.html
+vercel.json          routing and redirects
+CLAUDE.md            event card procedures
 /images
-/assets
+/forms               waiver PDF
 /js
 └── main.js
-/styles
-/pdfs
-/flyers
+style.css
 ```
 
-The exact page and folder structure may evolve as HobbyCon expands.
-
-Important:
-The full website folder should be kept together. The image folders, asset folders, flyers, PDFs, and logo files are required for the website to display correctly.
+**Keep the full website folder together.** The image folders, PDFs and logo files are required for the site to display correctly.
 
 ---
 
 ## ⚙️ Built With
 
 - HTML
-- Tailwind CSS CDN
+- Tailwind CSS (CDN)
 - Feather Icons
 - Vanilla JavaScript
-- Visual Studio Code
 - GitHub
-- GoDaddy cPanel
-- cPanel Git Version Control
-- Formspree
+- **Vercel** (hosting and deployment)
+- **Sucuri** (WAF / CDN, sits in front of Vercel)
+- GoDaddy (domain registrar and DNS)
+- **Google Apps Script** (all form handling)
+- Google Sheets (form submissions)
 - Stripe Payment Links
 - Google Analytics 4
 
-Recommended VS Code extensions:
-
-- Live Server
-- Prettier
-- Auto Rename Tag
-- Image Preview
+Recommended VS Code extensions: Live Server, Prettier, Auto Rename Tag, Image Preview.
 
 ---
 
 ## 🧠 Key Features
 
 - Fully responsive layout
-- Shared navigation across pages
-- Active page highlighting in the nav
+- Shared navigation with active page highlighting
 - Mobile-friendly menu toggle
-- Dynamic footer year update
+- Dynamic footer year
 - Modular JavaScript in `main.js`
-- Static-site friendly structure
-- Formspree-powered forms
-- Stripe ticket/payment links
+- Clean URLs (`/retreats`, not `/retreats.html`) via `vercel.json`
+- 90 vanity and typo redirects via `vercel.json`
+- Apps Script form handling writing to Google Sheets
+- Stripe payment link with a reference tying each booking to its sheet row
+- Canonical URLs on every page
 
 ---
 
-## 💻 How to Edit This Site
-
-### 1. Open the local project folder
-
-The main working copy is saved locally on the website manager’s laptop.
-
-Open the local HobbyCon website folder in Visual Studio Code.
-
-Do not edit the only backup copy. Before making major changes, duplicate the folder first.
-
----
-
-### 2. Preview changes locally
-
-In VS Code:
-
-1. Open the project folder.
-2. Right-click `index.html`.
-3. Select **Open with Live Server**.
-4. Test changes in the browser.
-
-Make sure to test:
-
-- homepage
-- navigation
-- mobile menu
-- images
-- forms
-- buttons
-- links
-- ticket links
-
----
-
-### 3. Publish updates to GitHub
-
-In GitHub Desktop:
-
-1. Review the changed files.
-2. Write a clear commit message.
-3. Click **Commit to main**.
-4. Click **Push origin**.
-
-This updates the GitHub repository.
-
----
-
-### 4. Deploy updates through cPanel
-
-The website is deployed through GoDaddy cPanel using **Git Version Control**.
-
-After pushing changes to GitHub:
-
-1. Log into GoDaddy / cPanel.
-2. Open **Git Version Control**.
-3. Find the HobbyCon website repository.
-4. Click **Update from Remote**.
-5. Visit `https://hobbycon.com` and confirm the website updated correctly.
-
-The live website files are located in:
+## 🚀 How the Site Is Served
 
 ```text
-public_html
+visitor
+  → DNS (GoDaddy, ns31/ns32.domaincontrol.com)
+  → 192.124.249.20   Sucuri WAF / CDN
+  → 216.198.79.1     Vercel  (origin)
 ```
+
+- **Vercel project:** `hobby-con`, under the `hellohobbycon@gmail.com` account
+- **`vercel.json`** handles clean URLs and all redirects. It replaced the old `.htaccess`.
+- **`.vercelignore`** keeps `README.md`, `CLAUDE.md` and internal folders out of the public deploy.
+
+---
+
+## 💻 How to Edit and Publish
+
+### 1. Edit locally
+
+Open the folder in VS Code, or use Claude Code from inside it.
+
+Preview with Live Server: right-click `index.html` → **Open with Live Server**.
+
+### 2. Commit and push
+
+```bash
+cd ~/Documents/GitHub/hobby-con
+git add -A && git commit -m "clear message" && git push
+```
+
+Or use GitHub Desktop: review changes → commit to `main` → **Push origin**.
+
+### 3. That's it
+
+Vercel builds automatically on push. Usually live in under a minute. **There is no cPanel step any more.**
+
+### If the change doesn't appear on hobbycon.com
+
+The deploy almost certainly worked — Sucuri is caching. It has been seen holding pages for ~21 hours.
+
+1. Check `https://hobby-con.vercel.app/<page>`. If the change is there, Vercel is fine.
+2. Bypass Sucuri's cache with any query string: `https://hobbycon.com/js/main.js?v=1`
+3. Clear the cache: GoDaddy → Website Security → Performance.
+
+**Browser cache clearing and Incognito do not help** — the stale copy is at Sucuri's edge, not on your machine.
+
+### What to test after a change
+
+Homepage, navigation, mobile menu, images, forms, buttons, ticket links.
 
 ---
 
 ## 🧾 Forms, Tickets & Integrations
 
-The website uses outside services that are not fully stored inside the website code.
+### Google Apps Script — all forms
 
-### Formspree
+Forms post directly to Google Apps Script web app endpoints, which write to Google Sheets and send notification emails. **Formspree is no longer used.**
 
-HobbyCon forms are connected to **Formspree**.
+| Form | Page |
+|---|---|
+| Retreat booking | retreats.html |
+| Retreat email interest | retreats.html |
+| Community email signup | community.html |
+| Contact | contact.html |
+| Vendor application | vendors.html |
+| General partnership | vendors.html |
 
-Formspree account information is stored in the internal HobbyCon Drive where all passwords live.
+Each form's `action` points at a `script.google.com/macros/s/.../exec` URL, and carries a shared token in a hidden field.
 
-The README may include Formspree endpoint IDs if needed, but passwords should not be stored directly in this file.
+**Two things that will catch you out:**
 
-Formspree may be used for:
+1. **Saving `Code.gs` does not deploy it.** You must use Deploy → **Manage deployments** → pencil → Version: **New version**. Choosing "New deployment" instead creates a *different* `/exec` URL and silently breaks the form pointing at the old one.
 
-- contact forms
-- vendor forms
-- signup forms
-- email collection forms
-- retreat or event forms
-
-When updating forms, check that the form action URL still points to the correct Formspree endpoint.
-
----
+2. **Sheets are matched by header name, not column position.** Reordering columns is safe. Renaming or blanking a header makes that field silently vanish. A sheet whose header row does not contain both "Name" and "Email" in the first 3 rows will reject every submission — this once went unnoticed for weeks, because the failure notification emails looked like confirmations.
 
 ### Stripe
 
-Ticketing and/or payments use **Stripe Payment Links**.
+Ticketing and the retreat deposit use **Stripe Payment Links**.
 
-Stripe account information and payment link details should be stored in the internal HobbyCon Drive where passwords and account access information live.
+The retreat form mints a reference (`HC-XXXXXXXX`) in the browser, sends it to Apps Script to be written into the Guest List row, and passes the same value to Stripe as `client_reference_id`. That links a payment to a signup.
 
-When updating ticket buttons or payment links, confirm that the links go to the correct Stripe Payment Link.
-
----
+**Known gap:** no Stripe webhook exists yet, so payments do not mark themselves "Paid" in the sheet. Reconciliation is manual against Stripe.
 
 ### Google Analytics
 
-Google Analytics 4 may be used for website analytics.
-
-Analytics access information should be stored with the rest of the HobbyCon account access information.
+Google Analytics 4, tag `G-5ZGXHXVQK5`.
 
 ---
 
-## 🔐 Important Access Checklist
+## 🔐 Access Checklist
 
-The team should know where to find access information for all of the following:
+The team should know where to find access for:
 
-- GitHub repository
-- GoDaddy hosting / cPanel
-- Domain settings / DNS
+- GitHub repository (`HobbyCon/hobby-con`)
+- Vercel account (`hellohobbycon@gmail.com`)
+- Google account holding the Sheets and Apps Script (`hellohobbycon@gmail.com`)
+- GoDaddy — domain, DNS, and Website Security (Sucuri)
+- GoDaddy hosting / cPanel — **still active, used for email only**
 - Website email account
-- Formspree forms
-- Stripe or ticket links
-- Canva, Adobe, logo files, or brand assets
-- Google Drive folders with images, flyers, PDFs, or source files
+- Stripe
+- Canva, Adobe, logo files, brand assets
+- Google Drive folders with images, flyers, PDFs
 
-Do not store passwords directly in this README.
+**Do not store passwords in this README.** They belong in the internal HobbyCon Drive or a password manager.
 
-Passwords and account login details should be stored securely in the internal HobbyCon Drive where all passwords live, or in an approved password manager.
+### Git access — one key per person
 
----
+Everyone pushes with their own GitHub account and their own SSH key. Keys are never shared.
 
-## 📦 Backup & Portability
-
-The website should have multiple backups.
-
-The most important backup is the full local website folder because it contains the complete website files, including images and assets.
+On a machine with more than one GitHub account, use an SSH host alias with `IdentitiesOnly yes` and point the repo's remote at it. An HTTPS remote authenticates with whatever single credential macOS has cached, which is shared across every repo — that can push or commit as the wrong account.
 
 ---
 
-## Important Note About the Local Website Folder
+## 📦 Backup & Recovery
 
-The local HobbyCon website folder is very important because it contains the full website files, including:
+### Backup priority
 
-- HTML pages
-- CSS files
-- JavaScript files
-- images
-- logos
-- flyers
-- PDFs
-- icons
-- other website assets
-
-The images and asset files are needed for the website to display correctly.
-
-If the team only has some of the code but does not have the image folders or asset folders, the website may load with broken images or missing design elements.
-
-Because of this, the full local website folder should be backed up and shared with the team.
-
-Do not only copy individual HTML files. Copy the entire website folder exactly as-is.
-
----
-
-## Backup Priority
-
-The team should keep backups in this order:
-
-### 1. Best backup: full local website folder
-
-A full copy of the local HobbyCon website folder from the website manager’s laptop.
-
-This should include:
-
-- HTML files
-- CSS files
-- JavaScript files
-- images
-- logos
-- flyers
-- PDFs
-- icons
-- assets
-- all other website folders
-
-This is the most complete version if all images and assets are stored locally.
-
----
-
-### 2. Second backup: GitHub repository
-
-GitHub repository:
+**1. GitHub repository** — the source of truth. Full history, every file, every version.
 
 ```text
-https://github.com/kparrish33/hobby-con
+https://github.com/HobbyCon/hobby-con
 ```
 
-GitHub stores the version-controlled copy of the website and the change history.
+**2. Full local website folder** — a complete copy from the website manager's laptop, including images and assets.
 
-Team members who need access should be added to the repository.
+**3. Drive backups** — `Google Drive > BACKUPS`, including the full cPanel archive taken 2026-10-02 (`backup-10.2.2026_08-13-36_v7ayp6aj7xyb.tar.gz`). That archive holds the site as it existed on cPanel, including pages since removed from the repo.
 
-Recommended access levels:
+### Making a backup
 
-- **Read access:** for team members who only need to download or back up the website.
-- **Write access:** for team members who may need to edit the website.
-- **Admin access:** only for trusted people who may need to manage settings, deployment, or collaborators.
+1. Duplicate the entire local website folder, images and assets included
+2. Rename with the date, e.g. `hobbycon-website-backup-2026-10-05`
+3. Compress to `.zip`
+4. Upload to the shared HobbyCon backup folder
+5. Open the ZIP to confirm it is complete
 
-Important:
-If images or large assets are stored locally but were not pushed to GitHub, the GitHub version may not contain the complete website. In that case, use the full local website folder backup.
+Do not rename internal folders (`images`, `js`, `forms`) unless the code is updated to match.
+
+### Checking a backup is complete
+
+Should contain `index.html`, all other page files, `style.css`, `js/main.js`, `images/`, `forms/`, and `vercel.json`.
+
+If the site opens but images are missing, the image folder is missing or paths were changed.
 
 ---
 
-### 3. Third backup: cPanel live website files
+# 🚨 Emergency Restore
 
-The live site files are stored in cPanel, usually in:
+### Option 1: Roll back in Vercel — fastest, start here
 
-```text
-public_html
+Vercel keeps every previous deployment.
+
+1. Go to the `hobby-con` project → **Deployments**
+2. Find the last known-good deployment
+3. **Promote to Production**
+
+Live within seconds, no git involved. This is the fastest way to undo a bad change.
+
+### Option 2: Revert the commit
+
+```bash
+cd ~/Documents/GitHub/hobby-con
+git revert <bad-commit-sha>
+git push
 ```
 
-A ZIP backup of `public_html` can be downloaded from cPanel File Manager as an emergency backup.
+Vercel redeploys automatically.
 
----
+### Option 3: Restore from GitHub
 
-## Recommended Shared Backup Folder
+1. Go to `https://github.com/HobbyCon/hobby-con`
+2. **Code** → **Download ZIP**
+3. Unzip and open `index.html` to check it locally
 
-The team should maintain a shared HobbyCon backup folder.
+### Option 4: Rebuild the Vercel project
 
-Suggested structure:
+If the Vercel project is lost entirely:
 
-```text
-HobbyCon Website Backup
-├── Latest Full Website Folder Backup
-├── GitHub Repository Link
-├── cPanel / Hosting Notes
-├── Domain / DNS Notes
-├── Website Email Notes
-├── Formspree Notes
-├── Stripe / Ticket Link Notes
-├── Brand Files
-├── Canva / Adobe Source Files
-├── Website Images
-├── PDFs and Flyers
-└── Emergency Restore Instructions
-```
+1. Create a new project in Vercel, import `HobbyCon/hobby-con`
+2. Framework preset: **Other**. No build command, no output directory.
+3. Add `hobbycon.com` under Domains
+4. Point the apex A record at the IP Vercel gives you
 
-The most important folder is:
+**Rollback IP if the site must go back to cPanel:** set the apex A record to `192.124.249.20`.
 
-```text
-Latest Full Website Folder Backup
-```
+### After restoring, test
 
-That folder should contain the full website exactly as it exists locally.
+Homepage, navigation, images, flyers and PDFs, all six forms, ticket buttons, Stripe links, mobile and desktop layout, footer and social links.
 
----
-
-## How to Create a Backup
-
-Before making major changes:
-
-1. Find the current local HobbyCon website folder.
-2. Duplicate the entire folder.
-3. Make sure the copy includes all image and asset folders.
-4. Rename the backup with the date.
-
-Example:
-
-```text
-hobbycon-website-backup-2026-06-17
-```
-
-5. Compress the folder into a `.zip`.
-6. Upload the ZIP to the shared HobbyCon backup folder.
-7. Confirm the ZIP can be opened and contains the full website structure.
-
-Do not rename internal folders such as `images`, `assets`, `js`, `pdfs`, or `flyers` unless the website code is also updated.
-
----
-
-## How to Check That the Backup Is Complete
-
-A complete website backup should include:
-
-- homepage file, usually `index.html`
-- all other page files
-- CSS files
-- JavaScript files
-- image folders
-- logo files
-- flyer files
-- PDF files
-- any other folders used by the website
-
-Common folders to check for:
-
-```text
-images/
-assets/
-img/
-media/
-flyers/
-pdfs/
-downloads/
-js/
-styles/
-```
-
-If the site opens but images are missing, the image paths or image folders may be missing.
-
----
-
-# 🚨 Emergency Restore Instructions
-
-Use these instructions if the website needs to be restored or if the main website manager is unavailable.
-
----
-
-## Emergency Option 1: Use the Local Website Folder Backup
-
-Use this option if the team has access to the latest full local website folder backup.
-
-### Steps
-
-1. Find the latest full HobbyCon website folder backup.
-2. Download the entire folder.
-3. Make a duplicate copy before editing anything.
-4. Open the folder and check that it contains:
-   - `index.html`
-   - page files
-   - image folders
-   - asset folders
-   - JavaScript files
-   - PDFs or flyers, if used
-
-5. Open `index.html` in a browser to preview the site locally.
-6. If the website looks correct, use this folder to restore or update the site.
-
-Important:
-Do not edit the only backup copy. Always duplicate the folder first.
-
----
-
-## Emergency Option 2: Download the Website from GitHub
-
-Use this option if the team has GitHub access.
-
-### Steps
-
-1. Go to:
-
-```text
-https://github.com/kparrish33/hobby-con
-```
-
-2. Click the green **Code** button.
-3. Choose **Download ZIP**.
-4. Save the ZIP file to your computer.
-5. Unzip the folder.
-6. Open `index.html` to view the site locally.
-7. Confirm that the image and asset folders are included.
-
-Important:
-After downloading from GitHub, confirm that the image and asset folders are included. If they are missing, use the local website folder backup instead.
-
----
-
-## Emergency Option 3: Restore Through cPanel Git Version Control
-
-Use this option if GitHub is available and the cPanel Git connection is still working.
-
-### Steps
-
-1. Log into GoDaddy / cPanel.
-2. Open **Git Version Control**.
-3. Find the HobbyCon website repository.
-4. Click **Update from Remote**.
-5. Confirm the live site updates correctly.
-6. Visit:
-
-```text
-https://hobbycon.com
-```
-
-7. Test the website.
-
----
-
-## Emergency Option 4: Restore by Uploading the Backup Folder to cPanel
-
-Use this option if GitHub is unavailable, the cPanel Git connection is broken, or the team needs to manually restore the site.
-
-### Steps
-
-1. Find the latest full HobbyCon website backup folder.
-2. Compress the full website folder into a `.zip` file.
-3. Log into GoDaddy / cPanel.
-4. Open **File Manager**.
-5. Go to:
-
-```text
-public_html
-```
-
-6. Upload the website backup ZIP.
-7. Extract the ZIP inside `public_html`.
-8. Make sure `index.html` is directly inside `public_html`.
-
-Correct structure:
-
-```text
-public_html/index.html
-public_html/images/
-public_html/assets/
-public_html/js/
-```
-
-Incorrect structure:
-
-```text
-public_html/hobbycon-website-backup/index.html
-public_html/hobbycon-website-backup/images/
-public_html/hobbycon-website-backup/assets/
-```
-
-If the files are inside an extra folder, move them up into `public_html`.
-
-The homepage file must be here:
-
-```text
-public_html/index.html
-```
-
-not here:
-
-```text
-public_html/some-folder/index.html
-```
-
----
-
-## What to Test After Restoring the Website
-
-After restoring or updating the website, test:
-
-- homepage
-- all navigation links
-- images and logos
-- flyers and PDFs
-- contact forms
-- vendor forms
-- signup forms
-- ticket buttons
-- Stripe payment links
-- mobile layout
-- desktop layout
-- footer links
-- social media links
-
-If images are missing, check that the image folders were uploaded and that the folder names were not changed.
-
-If forms are not working, check the Formspree endpoint URLs and confirm the Formspree account is active.
-
-If ticket buttons are not working, check the Stripe Payment Links.
-
----
-
-## Simple Emergency Instructions
-
-If the website needs to be restored quickly:
-
-1. Find the latest full local HobbyCon website folder backup.
-2. Confirm that it includes the image and asset folders.
-3. Log into GoDaddy / cPanel.
-4. Open **File Manager**.
-5. Go to `public_html`.
-6. Upload the website files or ZIP backup.
-7. Extract the ZIP if needed.
-8. Make sure `index.html` is directly inside `public_html`.
-9. Visit `https://hobbycon.com`.
-10. Test pages, images, forms, and buttons.
-
-The most important thing is to keep the full website folder together. The image folders and asset folders are required for the website to display correctly.
+If forms fail, check the Apps Script deployment is on the current version and that the sheet headers are intact.
 
 ---
 
 ## Current Workflow Summary
 
-The website is edited locally, saved in GitHub, and deployed through cPanel.
-
-The normal workflow is:
-
 ```text
-Local HobbyCon Website Folder
-→ GitHub Repository
-→ cPanel public_html
+Local folder
+→ git push to main
+→ Vercel builds automatically
+→ Sucuri (may need a cache clear)
 → hobbycon.com
 ```
-
-If something happens, the team should use either:
-
-1. the latest full local website folder backup, or
-2. the GitHub repository, or
-3. the live cPanel files in `public_html`
-
-to recover the site.
 
 ---
 
 ## 🧑‍💻 Contributors
 
 Primary Maintainer: HobbyCon website manager
-
 Organization: HobbyCon
 
 ---
