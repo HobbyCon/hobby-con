@@ -229,7 +229,9 @@ Remove the card outright, including its `<!-- Event: ... -->` comment. index.htm
 
 ## Verify before committing
 
-- `events.html` upcoming grid: card count is even, or the last row will look lopsided at `sm:grid-cols-2`.
+- `events.html` upcoming grid: any number of cards is fine. Odd counts look
+  correct at `sm:grid-cols-2` — do not flag this, and do not add or remove a
+  card to make the count even.
 - `index.html`: exactly 3 `<a class="hc-card ...">` inside `.event-grid`, exactly 3 `.event-dot` buttons.
 - `index.html`: the 3 badge dates ascend, and they are the soonest 3 upcoming events on the site. Run the order check below.
 - Every `images/...` path referenced actually exists.
