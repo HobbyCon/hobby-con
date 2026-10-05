@@ -326,6 +326,60 @@
     </p>
   </div>
 
+          <!-- Retreat info signup -> Sender.net (groups: 2026, Mahjong, Retreats) -->
+          <div class="hc-card bg-white border border-slate-200 rounded-3xl p-7 md:p-8 mt-8">
+            <h3 class="text-2xl md:text-3xl font-bold text-slate-900">Sign Up for Retreat Information</h3>
+            <p class="mt-2 text-sm text-slate-600">
+              Not ready to book? Leave your email and we will keep you posted on this
+              retreat and the ones after it
+            </p>
+
+            <form
+              id="retreatInfoForm"
+              action="https://script.google.com/macros/s/AKfycbynAKU83GSozAerk_gN8vcE5A2kDmI81Oz49JHZOIC3U-QK3xKkkFPpCWLJ0-9w6MvATg/exec"
+              method="POST"
+              class="mt-6 flex flex-col sm:flex-row gap-3"
+            >
+              <!-- Must match SHARED_SECRET in RetreatSignupCode.gs. Not secret from
+                   the user (it is in page source) - it only deters drive-by bots. -->
+              <input type="hidden" name="token" value="s66OGgj9UwTXYHUqzOHx8coIScwDbbVs" />
+
+              <!-- Anti-spam honeypot. Off-screen rather than display:none, which the
+                   better form-fillers know to skip. Named "fax" on purpose: "website"
+                   is a real field elsewhere on the site. -->
+              <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+                <input type="text" name="fax" tabindex="-1" autocomplete="off" />
+              </div>
+              <!-- Seconds this page had been open when submit fired; stamped by main.js -->
+              <input type="hidden" name="formElapsed" value="" />
+
+              <label class="sr-only" for="retreatInfoEmail">Email</label>
+              <input
+                id="retreatInfoEmail"
+                type="email"
+                name="email"
+                required
+                placeholder="you@example.com"
+                class="flex-1 px-4 py-3 rounded-2xl bg-white border border-slate-200 text-slate-900
+                      focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-300"
+              />
+
+              <button
+                type="submit"
+                class="hc-btn hc-btn-primary px-6 py-3 inline-flex items-center justify-center gap-2 whitespace-nowrap"
+              >
+                Keep Me Posted <i data-feather="arrow-right" class="w-4 h-4"></i>
+              </button>
+            </form>
+
+            <p id="retreatInfoThanks" class="hidden mt-4 text-sm font-semibold text-emerald-700">
+              You&rsquo;re on the list. We&rsquo;ll be in touch
+            </p>
+            <p id="retreatInfoError" class="hidden mt-4 text-sm font-semibold text-red-600">
+              Something went wrong. Please try again, or email us directly
+            </p>
+          </div>
+
           <!-- FAQ -->
           <div class="mt-8 hc-card bg-white border border-slate-200 rounded-3xl p-7 md:p-8">
             <h2 class="text-2xl md:text-3xl font-bold text-slate-900">FAQ</h2>
@@ -487,63 +541,15 @@
             </div>
           </div>
 
-          <!-- Retreat info signup -> Sender.net (groups: 2026, Mahjong, Retreats) -->
-          <div class="hc-card bg-white border border-slate-200 rounded-3xl p-7 md:p-8 mt-8">
-            <h3 class="text-2xl md:text-3xl font-bold text-slate-900">Sign Up for Retreat Information</h3>
-            <p class="mt-2 text-sm text-slate-600">
-              Not ready to book? Leave your email and we will keep you posted on this
-              retreat and the ones after it
-            </p>
-
-            <form
-              id="retreatInfoForm"
-              action="https://script.google.com/macros/s/AKfycbynAKU83GSozAerk_gN8vcE5A2kDmI81Oz49JHZOIC3U-QK3xKkkFPpCWLJ0-9w6MvATg/exec"
-              method="POST"
-              class="mt-6 flex flex-col sm:flex-row gap-3"
-            >
-              <!-- Must match SHARED_SECRET in RetreatSignupCode.gs. Not secret from
-                   the user (it is in page source) - it only deters drive-by bots. -->
-              <input type="hidden" name="token" value="s66OGgj9UwTXYHUqzOHx8coIScwDbbVs" />
-
-              <!-- Anti-spam honeypot. Off-screen rather than display:none, which the
-                   better form-fillers know to skip. Named "fax" on purpose: "website"
-                   is a real field elsewhere on the site. -->
-              <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
-                <input type="text" name="fax" tabindex="-1" autocomplete="off" />
-              </div>
-              <!-- Seconds this page had been open when submit fired; stamped by main.js -->
-              <input type="hidden" name="formElapsed" value="" />
-
-              <label class="sr-only" for="retreatInfoEmail">Email</label>
-              <input
-                id="retreatInfoEmail"
-                type="email"
-                name="email"
-                required
-                placeholder="you@example.com"
-                class="flex-1 px-4 py-3 rounded-2xl bg-white border border-slate-200 text-slate-900
-                      focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-300"
-              />
-
-              <button
-                type="submit"
-                class="hc-btn hc-btn-primary px-6 py-3 inline-flex items-center justify-center gap-2 whitespace-nowrap"
-              >
-                Keep Me Posted <i data-feather="arrow-right" class="w-4 h-4"></i>
-              </button>
-            </form>
-
-            <p id="retreatInfoThanks" class="hidden mt-4 text-sm font-semibold text-emerald-700">
-              You&rsquo;re on the list. We&rsquo;ll be in touch
-            </p>
-            <p id="retreatInfoError" class="hidden mt-4 text-sm font-semibold text-red-600">
-              Something went wrong. Please try again, or email us directly
-            </p>
-          </div>
-
           <!-- Past Events -->
           <div class="hc-card bg-white border border-slate-200 rounded-3xl p-7 md:p-8 mt-8">
-            <h3 class="text-2xl md:text-3xl font-bold text-slate-900">Past Events</h3>
+            <div class="flex items-center justify-between gap-4">
+              <h3 class="text-2xl md:text-3xl font-bold text-slate-900">Past Events</h3>
+              <div class="flex items-center gap-2 shrink-0">
+                <a href="https://www.facebook.com/hobbyconretreats/" target="_blank" rel="noopener noreferrer" aria-label="HobbyCon Retreats on Facebook" class="w-12 h-12 rounded-2xl bg-white border border-purple-200 text-purple-600 inline-flex items-center justify-center shadow-sm hover:shadow-md hover:bg-purple-50 transition-all duration-300"><i data-feather="facebook" class="w-6 h-6"></i></a>
+                <a href="https://www.instagram.com/hobbyconretreats/" target="_blank" rel="noopener noreferrer" aria-label="HobbyCon Retreats on Instagram" class="w-12 h-12 rounded-2xl bg-white border border-purple-200 text-purple-600 inline-flex items-center justify-center shadow-sm hover:shadow-md hover:bg-purple-50 transition-all duration-300"><i data-feather="instagram" class="w-6 h-6"></i></a>
+              </div>
+            </div>
             <p class="mt-2 text-sm text-slate-600">
               A look at where we have been
             </p>
@@ -555,7 +561,7 @@
                     Labor Day Weekend 2026
                   </div>
                   <div class="mt-1 text-lg font-bold text-slate-900">
-                    Mahjong + Yoga Retreat
+                    Mahjong + Yoga Retreat 🧘‍♀️🌸🫧
                   </div>
                 </div>
 
@@ -569,8 +575,172 @@
               </p>
 
               <p class="mt-3 text-sm text-slate-600 leading-relaxed">
-                A Mahjong + Yoga Retreat weekend on the water with Mahjong lessons,
-                guided yoga, and meals included
+                This retreat weekend on the Long Island Sound was full of meaningful connections and shared community. The getaway featured waterfront activities including Mahjong lessons and open play, guided yoga, and meals included!
+              </p>
+
+              <!-- Instagram post previews: each card links to its post -->
+              <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <a
+                  href="https://www.instagram.com/reel/Dc6EqYfRt5H/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View this post on Instagram"
+                  class="block rounded-2xl bg-white border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow"
+                >
+                  <div class="flex items-center gap-3 px-4 py-3">
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-500 to-pink-400 flex items-center justify-center text-white shrink-0">
+                      <i data-feather="instagram" class="w-4 h-4"></i>
+                    </div>
+                    <div class="min-w-0">
+                      <div class="text-sm font-semibold text-slate-900 leading-tight">hobbyconretreats</div>
+                      <div class="text-xs text-slate-500 leading-tight">Poquott, NY</div>
+                    </div>
+                  </div>
+
+                  <div class="relative bg-slate-100">
+                    <img
+                      src="images/sep26retreatreel.jpg"
+                      alt="Mahjong Retreat Instagram reel preview"
+                      class="w-full aspect-[4/5] object-cover"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-0 flex items-center justify-center">
+                      <div class="w-14 h-14 rounded-full bg-black/40 flex items-center justify-center text-white">
+                        <i data-feather="play" class="w-6 h-6"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="px-4 py-3">
+                    <p class="text-sm text-slate-700 leading-relaxed line-clamp-3 min-h-[4.3rem]">
+                      <span class="font-semibold text-slate-900">hobbyconretreats</span>
+                      welcome to @hobbyconretreats we're in full swing at our Mahjong Retreat!
+                    </p>
+                    <div class="mt-2 text-xs font-semibold text-purple-700">View on Instagram</div>
+                  </div>
+                </a>
+                <a
+                  href="https://www.instagram.com/reel/Dc7H7iWgOwr/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View this post on Instagram"
+                  class="block rounded-2xl bg-white border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow"
+                >
+                  <div class="flex items-center gap-3 px-4 py-3">
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-500 to-pink-400 flex items-center justify-center text-white shrink-0">
+                      <i data-feather="instagram" class="w-4 h-4"></i>
+                    </div>
+                    <div class="min-w-0">
+                      <div class="text-sm font-semibold text-slate-900 leading-tight">hobbyconretreats</div>
+                      <div class="text-xs text-slate-500 leading-tight">Poquott, NY</div>
+                    </div>
+                  </div>
+
+                  <div class="relative bg-slate-100">
+                    <img
+                      src="images/sep26retreatdinner.jpg"
+                      alt="Saturday night retreat dinner Instagram reel preview"
+                      class="w-full aspect-[4/5] object-cover"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-0 flex items-center justify-center">
+                      <div class="w-14 h-14 rounded-full bg-black/40 flex items-center justify-center text-white">
+                        <i data-feather="play" class="w-6 h-6"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="px-4 py-3">
+                    <p class="text-sm text-slate-700 leading-relaxed line-clamp-3 min-h-[4.3rem]">
+                      <span class="font-semibold text-slate-900">hobbyconretreats</span>
+                      Our Saturday night dinner was a hit, when's the last time you had a Habachi night with the girls? If the answer is more than a week ago, sounds like you need another one! 😮
+                    </p>
+                    <div class="mt-2 text-xs font-semibold text-purple-700">View on Instagram</div>
+                  </div>
+                </a>
+                <a
+                  href="https://www.instagram.com/reel/Dc9loNYAxqc/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View this post on Instagram"
+                  class="block rounded-2xl bg-white border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow"
+                >
+                  <div class="flex items-center gap-3 px-4 py-3">
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-500 to-pink-400 flex items-center justify-center text-white shrink-0">
+                      <i data-feather="instagram" class="w-4 h-4"></i>
+                    </div>
+                    <div class="min-w-0">
+                      <div class="text-sm font-semibold text-slate-900 leading-tight">hobbyconretreats</div>
+                      <div class="text-xs text-slate-500 leading-tight">Poquott, NY</div>
+                    </div>
+                  </div>
+
+                  <div class="relative bg-slate-100">
+                    <img
+                      src="images/sep26retreatlastday.jpg"
+                      alt="Last retreat day Instagram reel preview"
+                      class="w-full aspect-[4/5] object-cover"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-0 flex items-center justify-center">
+                      <div class="w-14 h-14 rounded-full bg-black/40 flex items-center justify-center text-white">
+                        <i data-feather="play" class="w-6 h-6"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="px-4 py-3">
+                    <p class="text-sm text-slate-700 leading-relaxed line-clamp-3 min-h-[4.3rem]">
+                      <span class="font-semibold text-slate-900">hobbyconretreats</span>
+                      Our last retreat day! We've had such an amazing time with our Mahjong hobbyists, they've really made this weekend the best time 🀄️
+                    </p>
+                    <div class="mt-2 text-xs font-semibold text-purple-700">View on Instagram</div>
+                  </div>
+                </a>
+
+                <a
+                  href="https://www.instagram.com/p/Dc_KDS4EeTf/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View this post on Instagram"
+                  class="block rounded-2xl bg-white border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow"
+                >
+                  <div class="flex items-center gap-3 px-4 py-3">
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-500 to-pink-400 flex items-center justify-center text-white shrink-0">
+                      <i data-feather="instagram" class="w-4 h-4"></i>
+                    </div>
+                    <div class="min-w-0">
+                      <div class="text-sm font-semibold text-slate-900 leading-tight">hobbyconretreats</div>
+                      <div class="text-xs text-slate-500 leading-tight">Poquott, NY</div>
+                    </div>
+                  </div>
+
+                  <div class="relative bg-slate-100">
+                    <img
+                      src="images/sep26retreatlaborday.jpg"
+                      alt="What the Mahjong Hobbysits did for Labor Day Weekend Instagram post preview"
+                      class="w-full aspect-[4/5] object-cover"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-0 flex items-center justify-center">
+                      <div class="w-14 h-14 rounded-full bg-black/40 flex items-center justify-center text-white">
+                        <i data-feather="play" class="w-6 h-6"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="px-4 py-3">
+                    <p class="text-sm text-slate-700 leading-relaxed line-clamp-3 min-h-[4.3rem]">
+                      <span class="font-semibold text-slate-900">hobbyconretreats</span>
+                      no labor done this weekend for the mahjong hobbyists 🀄️ 💐
+                    </p>
+                    <div class="mt-2 text-xs font-semibold text-purple-700">View on Instagram</div>
+                  </div>
+                </a>
+              </div>
+
+              <p class="mt-4 text-sm">
+                <a href="https://www.facebook.com/hobbyconretreats/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-semibold text-purple-700 hover:text-purple-900 transition">Click here to see the posts on our Facebook Page <i data-feather="external-link" class="w-4 h-4"></i></a>
               </p>
             </div>
           </div>
