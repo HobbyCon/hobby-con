@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5ZGXHXVQK5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5ZGXHXVQK5');
+</script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Mahjong Social Tournament | HobbyCon</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta
+      name="description"
+      content="Mahjong Social Tournament, Saturday December 12 and Sunday December 13, 2026, Setauket, NY. Early bird tickets $50 per day."
+    />
+
+    <!-- Social / Open Graph -->
+    <meta
+      property="og:title"
+      content="Mahjong Social Tournament | HobbyCon"
+    />
+    <meta
+      property="og:description"
+      content="Mahjong Social Tournament, Saturday December 12 and Sunday December 13, 2026, Setauket, NY. Early bird tickets $50 per day."
+    />
+    <meta
+      property="og:image"
+      content="https://hobbycon.com/images/logo-01.png"
+    />
+    <link rel="canonical" href="https://hobbycon.com/mahjong-tournament" />
+    <meta property="og:url" content="https://hobbycon.com/mahjong-tournament" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Mahjong Social Tournament | HobbyCon"
+    />
+    <meta
+      name="twitter:description"
+      content="Mahjong Social Tournament, Saturday December 12 and Sunday December 13, 2026, Setauket, NY. Early bird tickets $50 per day."
+    />
+    <meta
+      name="twitter:image"
+      content="https://hobbycon.com/images/logo-01.png"
+    />
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="HobbyCon" />
+<link rel="manifest" href="/site.webmanifest" />
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+  </head>
+
+  <body class="bg-glow text-slate-900">
+
+  <div class="relative">
+    <!-- NAV -->
+<header class="bg-white border-b border-slate-200 relative">
+  <div
+    class="absolute bottom-0 left-0 right-0 h-[2px]
+           bg-gradient-to-r from-purple-300 to-indigo-300"
+  ></div>
+</header>
+
+      <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-3">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <img
+            src="images/logo-01.png"
+            alt="HobbyCon"
+            id="logo"
+            class="h-32 transform transition-transform duration-500 ease-out select-none"
+            draggable="false"
+          />
+        </div>
+
+        </a>
+
+        <nav class="hidden md:flex items-center gap-7 text-base text-slate-700">
+          <!-- EVENTS DROPDOWN -->
+          <div class="relative group">
+            <button class="nav-link font-semibold flex items-center gap-1">
+              Events
+              <i data-feather="chevron-down" class="w-4 h-4"></i>
+            </button>
+
+            <div class="absolute left-0 top-full mt-0
+              w-56 bg-white shadow-lg rounded-lg z-[999]
+              opacity-0 pointer-events-none
+              group-hover:opacity-100 group-hover:pointer-events-auto
+              transition-opacity duration-150">
+              <a href="retreats" class="block px-4 py-2 hover:bg-gray-100">Retreats</a>
+              <a href="mahjong-tournament" class="block px-4 py-2 hover:bg-gray-100">Mahjong Tournament</a>
+              <a href="events" class="block px-4 py-2 hover:bg-gray-100 rounded-b-lg">HobbyClubs!</a>
+            </div>
+          </div>
+          <a class="nav-link font-semibold hover:text-slate-900" href="community">Community</a>
+          <a class="nav-link font-semibold hover:text-slate-900" href="vendors">Vendors</a>
+          <a class="nav-link font-semibold hover:text-slate-900" href="contact">Contact</a>
+          <a href="tickets" class="hc-btn hc-btn-primary px-7 py-3 text-base font-semibold text-white rounded-full">
+            Get Tickets
+          </a>
+
+        </nav>
+
+        <button
+          id="menu-btn"
+          class="md:hidden p-2 rounded-xl hover:bg-slate-100 transition"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <i data-feather="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+     <!-- Mobile menu -->
+<div id="mobile-menu" class="md:hidden hidden border-t border-slate-200 bg-white/95 backdrop-blur">
+  <div class="max-w-6xl mx-auto px-5 py-6">
+    <!-- Right-aligned stack (NOT full width) -->
+    <nav class="ml-auto w-fit flex flex-col items-end gap-3 text-base text-slate-700">
+
+    <!-- Events dropdown -->
+    <details class="w-fit">
+      <summary class="list-none cursor-pointer select-none font-semibold flex items-center justify-end gap-2 py-2 px-3 transition">
+        <span class="m-underline">
+          <span>Events</span>
+          <i data-feather="chevron-down" class="w-4 h-4"></i>
+        </span>
+      </summary>
+
+      <div class="mt-2 pr-3 border-r border-slate-200 flex flex-col items-end gap-1">
+        <a href="retreats" class="w-fit px-3 py-2 transition">Retreats</a>
+        <a href="mahjong-tournament" class="w-fit px-3 py-2 transition">Mahjong Tournament</a>
+        <a href="events" class="w-fit px-3 py-2 transition">HobbyClubs!</a>
+      </div>
+    </details>
+
+      <a class="w-fit font-semibold py-2 px-3 transition" href="community">Community</a>
+      <a class="w-fit font-semibold py-2 px-3 transition" href="vendors">Vendors</a>
+      <a class="w-fit font-semibold py-2 px-3 transition" href="contact">Contact</a>
+
+      <!-- CTA (not full width) -->
+      <a href="tickets" class="hc-btn hc-btn-primary px-7 py-3 text-base font-semibold text-white rounded-full w-fit mt-1">
+        Get Tickets
+      </a>
+    </nav>
+  </div>
+</div>
+   
+    <!-- HERO -->
+    <section class="max-w-6xl mx-auto px-5 pt-10 pb-8 md:pt-14 md:pb-10">
+      <div
+        class="hc-card isolate rounded-3xl border border-purple-200 bg-gradient-to-br from-purple-50 to-indigo-50 p-8 md:p-12 overflow-hidden relative"
+      >
+        <div class="hidden sm:block absolute -top-24 -right-24 h-64 w-64 rounded-full bg-purple-200/40 blur-3xl"></div>
+        <div class="hidden sm:block absolute -bottom-28 -left-28 h-72 w-72 rounded-full bg-indigo-200/40 blur-3xl"></div>
+
+        <div class="grid lg:grid-cols-12 gap-10 items-center relative">
+          <!-- Left -->
+          <div class="lg:col-span-7 space-y-6">
+            <h1 class="text-3xl md:text-5xl font-bold leading-[1.05] text-slate-900">
+              Mahjong Tournament on the Long Island Sound
+            </h1>
+
+            <p class="text-base md:text-lg text-slate-600 leading-relaxed">
+              Join us for a social tournament with a full day of play, lunch, and raffle baskets. Come for one day or both!
+            </p>
+
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-50 border border-purple-200 text-purple-700">
+                Day 1: Saturday, December 12
+              </span>
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-50 border border-purple-200 text-purple-700">
+                Day 2: Sunday, December 13
+              </span>
+            </div>
+
+            <div class="mt-7 flex flex-col sm:flex-row gap-3">
+              <a href="#signup" class="hc-btn hc-btn-primary px-7 py-4 inline-flex items-center gap-2">
+                Sign Up Now <i data-feather="arrow-right" class="w-4 h-4"></i>
+              </a>
+
+              <a href="#schedule" class="hc-btn hc-btn-ghost px-7 py-4 inline-flex items-center gap-2">
+                View Schedule <i data-feather="calendar" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Quick highlights -->
+          <div class="lg:col-span-5 grid gap-3">
+            <div class="rounded-2xl bg-white border border-slate-200 p-4">
+              <div class="text-xs text-slate-500">PRICE</div>
+              <div class="mt-1 font-semibold text-slate-900">Only $50 per day by using code <span class="text-purple-700">EARLYBIRD</span> at checkout</div>
+              <div class="text-sm text-slate-600">Limited seats</div>
+            </div>
+            <div class="rounded-2xl bg-white border border-slate-200 p-4">
+              <div class="text-xs text-slate-500">FOOD</div>
+              <div class="mt-1 font-semibold text-slate-900">Lunch and beverages included</div>
+            </div>
+            <div class="rounded-2xl bg-white border border-slate-200 p-4">
+              <div class="text-xs text-slate-500">LOCATION</div>
+              <div class="mt-1 font-semibold text-slate-900">Setauket, NY</div>
+              <div class="text-sm text-slate-600">Full address shared with attendees</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="max-w-6xl mx-auto px-5 pb-16">
+      <div class="grid lg:grid-cols-12 gap-10 items-start">
+        <!-- LEFT -->
+        <div class="lg:col-span-7">
+          <!-- Schedule -->
+          <div id="schedule" class="scroll-mt-6 hc-card bg-white border border-slate-200 rounded-3xl p-7 md:p-8">
+            <h2 class="text-xl font-bold text-slate-900">
+              Tournament Schedule
+            </h2>
+
+            <!-- TODO: 12:00PM and 1:00PM are unconfirmed estimates (also 5:00PM on the prizes row), confirm before publishing -->
+            <div class="mt-4 divide-y divide-slate-200">
+              <div class="flex items-baseline gap-4 py-3">
+                <div class="w-24 shrink-0 text-sm font-bold text-slate-900">8:30AM</div>
+                <div class="font-semibold text-slate-900">Check-in &amp; freebies</div>
+              </div>
+              <div class="flex items-baseline gap-4 py-3">
+                <div class="w-24 shrink-0 text-sm font-bold text-slate-900">9:00AM</div>
+                <div class="font-semibold text-slate-900">3 rounds in the morning</div>
+              </div>
+              <div class="flex items-baseline gap-4 py-3">
+                <div class="w-24 shrink-0 text-sm font-bold text-slate-900">12:00PM</div>
+                <div class="font-semibold text-slate-900">Lunch &amp; socialization</div>
+              </div>
+              <div class="flex items-baseline gap-4 py-3">
+                <div class="w-24 shrink-0 text-sm font-bold text-slate-900">1:00PM</div>
+                <div class="font-semibold text-slate-900">3 rounds in the afternoon</div>
+              </div>
+              <div class="flex items-baseline gap-4 py-3">
+                <div class="w-24 shrink-0 text-sm font-bold text-slate-900">5:00PM</div>
+                <div class="font-semibold text-slate-900">Raffle baskets, prizes &amp; vendors</div>
+              </div>
+            </div>
+
+            <p class="mt-4 text-sm text-slate-600 leading-relaxed">
+              *Raffle winners selected at the end of Sunday, winners not present will be contacted by organizers to get their prizes
+            </p>
+          </div>
+
+          <!-- SIGN UP FORM -->
+          <!-- Posts to the TournamentSignupCode.gs Apps Script web app (writes to a Google Sheet).
+               Set the action URL and the token below once it is deployed. The token must match
+               SHARED_SECRET in the script. It is visible in page source, so it only deters
+               drive-by bots. -->
+      <div id="signup" class="scroll-mt-6 mt-8 hc-card rounded-3xl p-7 md:p-8 border border-purple-200 bg-gradient-to-br from-purple-50 to-indigo-50">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Tournament Sign Up</h2>
+        <p class="mt-2 text-sm text-slate-600">
+          Fill out the form and you will be taken straight to checkout
+        </p>
+
+        <form
+          id="tournamentSignupForm"
+          action="https://script.google.com/macros/s/AKfycbz3VusuBKnyad1unXczhTifXOlPgk-uwA1yNXDWFYB1uleUx0EPyR-UYlf9i48PQJ-kxw/exec"
+          method="POST"
+          class="mt-6 grid gap-5"
+          novalidate
+        >
+          <input type="hidden" name="token" value="7Kq2mXvR9tLpW4zNcB6yHsJd3eFgA8uQ" />
+
+          <!-- Anti-spam honeypot, off-screen rather than display:none -->
+          <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+            <input type="text" name="fax" tabindex="-1" autocomplete="off" />
+          </div>
+          <input type="hidden" name="formElapsed" value="" />
+
+          <fieldset>
+            <legend class="block text-sm font-semibold text-slate-900 mb-2">Which day(s) are you attending? *</legend>
+            <div class="flex flex-wrap gap-2">
+              <label class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 bg-white text-sm font-semibold text-slate-700 cursor-pointer has-[:checked]:bg-purple-50 has-[:checked]:border-purple-300 has-[:checked]:text-purple-700"><input type="radio" name="day" value="Saturday, December 12" data-checkout="https://book.stripe.com/dRm4gy1RXb293mpdNvgnK0w" class="accent-purple-600" required /> Saturday, December 12</label>
+              <label class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 bg-white text-sm font-semibold text-slate-700 cursor-pointer has-[:checked]:bg-purple-50 has-[:checked]:border-purple-300 has-[:checked]:text-purple-700"><input type="radio" name="day" value="Sunday, December 13" data-checkout="https://book.stripe.com/7sY5kC7chb29e13gZHgnK0v" class="accent-purple-600" /> Sunday, December 13</label>
+              <!-- TODO: remove "hidden" once the 2-day Stripe link replaces REPLACE_WITH_BOTH_DAYS_STRIPE_URL -->
+              <label class="hidden items-center gap-2 px-4 py-2 rounded-full border border-slate-200 bg-white text-sm font-semibold text-slate-700 cursor-pointer has-[:checked]:bg-purple-50 has-[:checked]:border-purple-300 has-[:checked]:text-purple-700"><input type="radio" name="day" value="Both days" data-checkout="REPLACE_WITH_BOTH_DAYS_STRIPE_URL" class="accent-purple-600" /> Both days</label>
+            </div>
+          </fieldset>
+
+          <div class="grid gap-5 md:grid-cols-2">
+            <div>
+              <label for="ts-name" class="block text-sm font-semibold text-slate-900 mb-2">Full name *</label>
+              <input id="ts-name" name="name" type="text" required autocomplete="name" class="w-full px-4 py-3 rounded-2xl bg-white border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-300" />
+            </div>
+            <div>
+              <label for="ts-email" class="block text-sm font-semibold text-slate-900 mb-2">Email *</label>
+              <input id="ts-email" name="email" type="email" required autocomplete="email" class="w-full px-4 py-3 rounded-2xl bg-white border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-300" />
+            </div>
+            <div>
+              <label for="ts-phone" class="block text-sm font-semibold text-slate-900 mb-2">Phone number *</label>
+              <input id="ts-phone" name="phone" type="tel" required autocomplete="tel" class="w-full px-4 py-3 rounded-2xl bg-white border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-300" />
+            </div>
+            <div>
+              <label for="ts-hear" class="block text-sm font-semibold text-slate-900 mb-2">How did you hear about us? *</label>
+              <select id="ts-hear" name="hearAbout" required class="w-full px-4 py-3 rounded-2xl bg-white border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-300">
+                <option value=""></option>
+                <option value="Contacted directly by HobbyCon">Contacted directly by HobbyCon</option>
+                <option value="Social media">Social media</option>
+                <option value="Google/web search">Google/web search</option>
+                <option value="Friends/family">Friends/family</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <fieldset>
+            <legend class="block text-sm font-semibold text-slate-900 mb-2">Would you like to be East? *</legend>
+            <div class="flex flex-wrap gap-2">
+              <label class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 bg-white text-sm font-semibold text-slate-700 cursor-pointer has-[:checked]:bg-purple-50 has-[:checked]:border-purple-300 has-[:checked]:text-purple-700"><input type="radio" name="east" value="Yes" class="accent-purple-600" required /> Yes</label>
+              <label class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 bg-white text-sm font-semibold text-slate-700 cursor-pointer has-[:checked]:bg-purple-50 has-[:checked]:border-purple-300 has-[:checked]:text-purple-700"><input type="radio" name="east" value="No" class="accent-purple-600" /> No</label>
+              <label class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 bg-white text-sm font-semibold text-slate-700 cursor-pointer has-[:checked]:bg-purple-50 has-[:checked]:border-purple-300 has-[:checked]:text-purple-700"><input type="radio" name="east" value="No preference" class="accent-purple-600" /> No preference</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend class="block text-sm font-semibold text-slate-900 mb-2">Will you bring your own Mahjong set? *</legend>
+            <div class="flex flex-wrap gap-2">
+              <label class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 bg-white text-sm font-semibold text-slate-700 cursor-pointer has-[:checked]:bg-purple-50 has-[:checked]:border-purple-300 has-[:checked]:text-purple-700"><input type="radio" name="ownSet" value="Yes" class="accent-purple-600" required /> Yes, I will bring my own set</label>
+              <label class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 bg-white text-sm font-semibold text-slate-700 cursor-pointer has-[:checked]:bg-purple-50 has-[:checked]:border-purple-300 has-[:checked]:text-purple-700"><input type="radio" name="ownSet" value="No" class="accent-purple-600" /> No, I need one provided</label>
+            </div>
+          </fieldset>
+
+          <div>
+            <label for="ts-allergies" class="block text-sm font-semibold text-slate-900 mb-2">Food allergies or dietary restrictions *</label>
+            <input id="ts-allergies" name="allergies" type="text" required placeholder="Enter None if you have none" class="w-full px-4 py-3 rounded-2xl bg-white border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-300" />
+          </div>
+
+          <label class="flex items-start gap-3 rounded-2xl bg-slate-50 border border-slate-200 p-4 text-sm text-slate-700 leading-relaxed cursor-pointer">
+            <input type="checkbox" name="acknowledged" value="Yes" required class="mt-1 h-4 w-4 shrink-0 accent-purple-600" />
+            <span>
+              I understand I am participating at my own risk and release HobbyCon from liability for injury
+              or loss to the extent permitted by law. I also consent to HobbyCon photographing or filming
+              the event and using the images to promote HobbyCon. *
+            </span>
+          </label>
+
+          <div>
+            <button
+              type="submit"
+              class="hc-btn hc-btn-primary px-7 py-3 inline-flex items-center justify-center gap-2 whitespace-nowrap"
+            >
+              Submit and go to checkout <i data-feather="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </form>
+
+        <p id="tournamentSignupThanks" class="hidden mt-4 text-sm font-semibold text-emerald-700">
+          Thank you! Taking you to checkout...
+        </p>
+        <p id="tournamentSignupError" class="hidden mt-4 text-sm font-semibold text-red-600">
+          Something went wrong. Please try again, or contact us directly
+        </p>
+      </div>
+          <!-- Property -->
+          <div class="hc-card bg-white border border-slate-200 rounded-3xl p-7 md:p-8 mt-8">
+            <div class="flex items-center justify-between gap-4">
+              <h3 class="text-2xl md:text-3xl font-bold text-slate-900">Take a Look at the Property</h3>
+              <div class="flex items-center gap-2 shrink-0">
+                <a href="https://www.facebook.com/hobbyconretreats/" target="_blank" rel="noopener noreferrer" aria-label="HobbyCon Retreats on Facebook" class="w-12 h-12 rounded-2xl bg-white border border-purple-200 text-purple-600 inline-flex items-center justify-center shadow-sm hover:shadow-md hover:bg-purple-50 transition-all duration-300"><i data-feather="facebook" class="w-6 h-6"></i></a>
+                <a href="https://www.instagram.com/hobbyconretreats/" target="_blank" rel="noopener noreferrer" aria-label="HobbyCon Retreats on Instagram" class="w-12 h-12 rounded-2xl bg-white border border-purple-200 text-purple-600 inline-flex items-center justify-center shadow-sm hover:shadow-md hover:bg-purple-50 transition-all duration-300"><i data-feather="instagram" class="w-6 h-6"></i></a>
+              </div>
+            </div>
+            <div class="mt-6 rounded-2xl bg-slate-50 border border-slate-200 p-5">
+              <!-- Instagram post previews: each card links to its post -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <a
+                  href="https://www.instagram.com/reel/Dc6EqYfRt5H/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View this post on Instagram"
+                  class="block rounded-2xl bg-white border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow"
+                >
+                  <div class="flex items-center gap-3 px-4 py-3">
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-500 to-pink-400 flex items-center justify-center text-white shrink-0">
+                      <i data-feather="instagram" class="w-4 h-4"></i>
+                    </div>
+                    <div class="min-w-0">
+                      <div class="text-sm font-semibold text-slate-900 leading-tight">hobbyconretreats</div>
+                      <div class="text-xs text-slate-500 leading-tight">Poquott, NY</div>
+                    </div>
+                  </div>
+
+                  <div class="relative bg-slate-100">
+                    <img
+                      src="images/sep26retreatreel.jpg"
+                      alt="Mahjong Retreat Instagram reel preview"
+                      class="w-full aspect-[4/5] object-cover"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-0 flex items-center justify-center">
+                      <div class="w-14 h-14 rounded-full bg-black/40 flex items-center justify-center text-white">
+                        <i data-feather="play" class="w-6 h-6"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="px-4 py-3">
+                    <p class="text-sm text-slate-700 leading-relaxed line-clamp-3 min-h-[4.3rem]">
+                      <span class="font-semibold text-slate-900">hobbyconretreats</span>
+                      welcome to @hobbyconretreats we're in full swing at our Mahjong Retreat!
+                    </p>
+                    <div class="mt-2 text-xs font-semibold text-purple-700">View on Instagram</div>
+                  </div>
+                </a>
+                <a
+                  href="https://www.instagram.com/reel/Dc7H7iWgOwr/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View this post on Instagram"
+                  class="block rounded-2xl bg-white border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow"
+                >
+                  <div class="flex items-center gap-3 px-4 py-3">
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-500 to-pink-400 flex items-center justify-center text-white shrink-0">
+                      <i data-feather="instagram" class="w-4 h-4"></i>
+                    </div>
+                    <div class="min-w-0">
+                      <div class="text-sm font-semibold text-slate-900 leading-tight">hobbyconretreats</div>
+                      <div class="text-xs text-slate-500 leading-tight">Poquott, NY</div>
+                    </div>
+                  </div>
+
+                  <div class="relative bg-slate-100">
+                    <img
+                      src="images/sep26retreatdinner.jpg"
+                      alt="Saturday night retreat dinner Instagram reel preview"
+                      class="w-full aspect-[4/5] object-cover"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-0 flex items-center justify-center">
+                      <div class="w-14 h-14 rounded-full bg-black/40 flex items-center justify-center text-white">
+                        <i data-feather="play" class="w-6 h-6"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="px-4 py-3">
+                    <p class="text-sm text-slate-700 leading-relaxed line-clamp-3 min-h-[4.3rem]">
+                      <span class="font-semibold text-slate-900">hobbyconretreats</span>
+                      Our Saturday night dinner was a hit, when's the last time you had a Habachi night with the girls? If the answer is more than a week ago, sounds like you need another one! 😮
+                    </p>
+                    <div class="mt-2 text-xs font-semibold text-purple-700">View on Instagram</div>
+                  </div>
+                </a>
+                <a
+                  href="https://www.instagram.com/reel/Dc9loNYAxqc/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View this post on Instagram"
+                  class="block rounded-2xl bg-white border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow"
+                >
+                  <div class="flex items-center gap-3 px-4 py-3">
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-500 to-pink-400 flex items-center justify-center text-white shrink-0">
+                      <i data-feather="instagram" class="w-4 h-4"></i>
+                    </div>
+                    <div class="min-w-0">
+                      <div class="text-sm font-semibold text-slate-900 leading-tight">hobbyconretreats</div>
+                      <div class="text-xs text-slate-500 leading-tight">Poquott, NY</div>
+                    </div>
+                  </div>
+
+                  <div class="relative bg-slate-100">
+                    <img
+                      src="images/sep26retreatlastday.jpg"
+                      alt="Last retreat day Instagram reel preview"
+                      class="w-full aspect-[4/5] object-cover"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-0 flex items-center justify-center">
+                      <div class="w-14 h-14 rounded-full bg-black/40 flex items-center justify-center text-white">
+                        <i data-feather="play" class="w-6 h-6"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="px-4 py-3">
+                    <p class="text-sm text-slate-700 leading-relaxed line-clamp-3 min-h-[4.3rem]">
+                      <span class="font-semibold text-slate-900">hobbyconretreats</span>
+                      Our last retreat day! We've had such an amazing time with our Mahjong hobbyists, they've really made this weekend the best time 🀄️
+                    </p>
+                    <div class="mt-2 text-xs font-semibold text-purple-700">View on Instagram</div>
+                  </div>
+                </a>
+
+                <a
+                  href="https://www.instagram.com/p/Dc_KDS4EeTf/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View this post on Instagram"
+                  class="block rounded-2xl bg-white border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow"
+                >
+                  <div class="flex items-center gap-3 px-4 py-3">
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-500 to-pink-400 flex items-center justify-center text-white shrink-0">
+                      <i data-feather="instagram" class="w-4 h-4"></i>
+                    </div>
+                    <div class="min-w-0">
+                      <div class="text-sm font-semibold text-slate-900 leading-tight">hobbyconretreats</div>
+                      <div class="text-xs text-slate-500 leading-tight">Poquott, NY</div>
+                    </div>
+                  </div>
+
+                  <div class="relative bg-slate-100">
+                    <img
+                      src="images/sep26retreatlaborday.jpg"
+                      alt="What the Mahjong Hobbysits did for Labor Day Weekend Instagram post preview"
+                      class="w-full aspect-[4/5] object-cover"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-0 flex items-center justify-center">
+                      <div class="w-14 h-14 rounded-full bg-black/40 flex items-center justify-center text-white">
+                        <i data-feather="play" class="w-6 h-6"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="px-4 py-3">
+                    <p class="text-sm text-slate-700 leading-relaxed line-clamp-3 min-h-[4.3rem]">
+                      <span class="font-semibold text-slate-900">hobbyconretreats</span>
+                      no labor done this weekend for the mahjong hobbyists 🀄️ 💐
+                    </p>
+                    <div class="mt-2 text-xs font-semibold text-purple-700">View on Instagram</div>
+                  </div>
+                </a>
+              </div>
+
+              <p class="mt-4 text-sm">
+                <a href="https://www.facebook.com/hobbyconretreats/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-semibold text-purple-700 hover:text-purple-900 transition">Click here to see the posts on our Facebook Page <i data-feather="external-link" class="w-4 h-4"></i></a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <aside class="lg:col-span-5 space-y-6">
+        <div class="hc-card bg-white border border-slate-200 rounded-3xl shadow-sm p-6 md:p-7">
+          <div class="flex items-center mb-4">
+            <div class="bg-purple-100 p-2 rounded-full mr-3">
+              <i data-feather="tag" class="text-purple-700"></i>
+            </div>
+            <h3 class="font-bold text-lg text-slate-900">Pricing</h3>
+          </div>
+          <div class="space-y-2">
+            <p class="text-xl font-bold text-slate-900">EARLY BIRD: $50 per day</p>
+            <p class="text-xl font-bold text-slate-900">REGULAR: $75 per day</p>
+          </div>
+          <p class="mt-3 text-sm text-slate-600">Early bird ends November 12</p>
+        </div>
+
+        <div class="hc-card bg-white border border-slate-200 rounded-3xl shadow-sm p-6 md:p-7">
+          <div class="flex items-center mb-4">
+            <div class="bg-purple-100 p-2 rounded-full mr-3">
+              <i data-feather="book-open" class="text-purple-700"></i>
+            </div>
+            <h3 class="font-bold text-lg text-slate-900">Rules</h3>
+          </div>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            National Mahjong League rules, bring your own NMJL 2026 card. Please note this is a social tournament!
+          </p>
+        </div>
+
+        <div class="hc-card bg-white border border-slate-200 rounded-3xl shadow-sm p-6 md:p-7">
+          <div class="flex items-center mb-4">
+            <div class="bg-purple-100 p-2 rounded-full mr-3">
+              <i data-feather="coffee" class="text-purple-700"></i>
+            </div>
+            <h3 class="font-bold text-lg text-slate-900">Lunch and Beverages Included</h3>
+          </div>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Lunch of sandwiches, snacks, &amp; beverages
+          </p>
+        </div>
+
+        <div class="hc-card bg-white border border-slate-200 rounded-3xl shadow-sm p-6 md:p-7">
+          <div class="flex items-center mb-4">
+            <div class="bg-purple-100 p-2 rounded-full mr-3">
+              <i data-feather="gift" class="text-purple-700"></i>
+            </div>
+            <h3 class="font-bold text-lg text-slate-900">Prizes, Baskets, and Vendors</h3>
+          </div>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Prizes at the end of each day, raffle baskets drawn at the end of Sunday, plus vendors
+          </p>
+        </div>
+
+          <!-- Event sponsor -->
+      <div class="hc-card bg-white border border-slate-200 rounded-3xl p-7 md:p-8">
+        <div class="flex flex-col gap-6">
+
+          <!-- Label + Logo -->
+          <div class="shrink-0">
+
+            <!-- Label ABOVE logo -->
+            <div class="text-xs uppercase tracking-wide text-purple-600 font-semibold mb-4">
+              Event Sponsor
+            </div>
+
+            <!-- Logo -->
+            <div class="w-48 max-w-full h-28 rounded-2xl overflow-hidden border border-slate-200">
+              <img
+                src="images/CClogo_01.jpg"
+                alt="The Charleston Club logo"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <!-- Copy -->
+          <div class="min-w-0">
+            <h3 class="text-xl font-bold text-slate-900">
+              The Charleston Club
+            </h3>
+
+
+            <a href="https://thecharlestonclubaz.com/" target="_blank" rel="noopener noreferrer"
+               class="mt-3 inline-flex items-center gap-2 text-purple-600 font-semibold hover:text-purple-800 transition">
+              Learn more about The Charleston Club
+              <i data-feather="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+          <!-- Want more experiences -->
+          <div class="hc-card rounded-3xl p-7 md:p-8 border border-purple-200 bg-gradient-to-br from-purple-50 to-indigo-50">
+            <h3 class="text-xl font-bold text-slate-900">Want more HobbyCon experiences?</h3>
+            <p class="mt-2 text-sm text-slate-700">
+              Explore other events and the full convention experience
+            </p>
+
+            <div class="mt-5 flex flex-col sm:flex-row gap-3">
+              <a href="events" class="hc-btn hc-btn-primary px-6 py-3 inline-flex items-center gap-2">
+                Hobby Clubs ✨
+              </a>
+              <a href="community" class="hc-btn hc-btn-ghost px-6 py-3 inline-flex items-center gap-2">
+                Community <i data-feather="users" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- FAQ -->
+      <div class="hc-card bg-white border border-slate-200 rounded-3xl p-7 md:p-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900">FAQ</h2>
+
+        <div class="mt-6 space-y-3">
+              <details class="rounded-2xl border border-slate-200 bg-white p-5">
+                <summary class="cursor-pointer font-semibold text-slate-900 flex items-center justify-between">
+                  Do I need to attend both days?
+                  <span class="text-slate-400"><i data-feather="chevron-down" class="w-4 h-4"></i></span>
+                </summary>
+                <p class="mt-3 text-slate-700 leading-relaxed">
+                  No. You can join either day or both. Each day has its own sign up form and its own ticket.
+                </p>
+              </details>
+              <details class="rounded-2xl border border-slate-200 bg-white p-5">
+                <summary class="cursor-pointer font-semibold text-slate-900 flex items-center justify-between">
+                  What is included in my ticket?
+                  <span class="text-slate-400"><i data-feather="chevron-down" class="w-4 h-4"></i></span>
+                </summary>
+                <p class="mt-3 text-slate-700 leading-relaxed">
+                  Your ticket includes lunch and beverages, with a lunch of sandwiches, snacks, and beverages. You will also receive freebies at check-in. Please note any food allergies or dietary restrictions on the sign up form.
+                </p>
+              </details>
+              <details class="rounded-2xl border border-slate-200 bg-white p-5">
+                <summary class="cursor-pointer font-semibold text-slate-900 flex items-center justify-between">
+                  What rules are used and what do I need to bring?
+                  <span class="text-slate-400"><i data-feather="chevron-down" class="w-4 h-4"></i></span>
+                </summary>
+                <p class="mt-3 text-slate-700 leading-relaxed">
+                  We play by National Mahjong League rules. Please bring your own NMJL 2026 card.
+                </p>
+              </details>
+              <details class="rounded-2xl border border-slate-200 bg-white p-5">
+                <summary class="cursor-pointer font-semibold text-slate-900 flex items-center justify-between">
+                  How do the prizes and raffle work?
+                  <span class="text-slate-400"><i data-feather="chevron-down" class="w-4 h-4"></i></span>
+                </summary>
+                <p class="mt-3 text-slate-700 leading-relaxed">
+                  Prizes are given out at the end of each day. Raffle winners are selected at the end of Sunday. Winners who are not present will be contacted by organizers to get their prizes.
+                </p>
+              </details>
+              <details class="rounded-2xl border border-slate-200 bg-white p-5">
+                <summary class="cursor-pointer font-semibold text-slate-900 flex items-center justify-between">
+                  Where is the tournament?
+                  <span class="text-slate-400"><i data-feather="chevron-down" class="w-4 h-4"></i></span>
+                </summary>
+                <p class="mt-3 text-slate-700 leading-relaxed">
+                  The tournament is in Setauket, NY, on the Long Island Sound. The full address is shared with attendees.
+                </p>
+              </details>
+        </div>
+
+        <div class="mt-10 text-center">
+          <p class="text-slate-700 text-base">
+            Still have more questions?
+            <a
+              href="/contact"
+              class="font-semibold text-purple-600 hover:text-purple-800 underline underline-offset-4 transition"
+            >
+              Contact us
+            </a>
+          </p>
+        </div>
+      </div>
+        </aside>
+      </div>
+    </section>
+
+    <style>
+      /* Early bird popup: the $75 is cut, then $50 pops in. Replays each time it opens. */
+      #tsEarlyPopup .ts-cut { width: 0; }
+      #tsEarlyPopup .ts-new { opacity: 0; transform: scale(0.6); }
+      #tsEarlyPopup.flex .ts-cut { animation: ts-cut 0.7s ease-out 0.5s forwards; }
+      #tsEarlyPopup.flex .ts-old { animation: ts-fade 0.5s ease-out 1.2s forwards; }
+      #tsEarlyPopup.flex .ts-new { animation: ts-pop 0.6s cubic-bezier(0.2, 1.4, 0.4, 1) 1.5s forwards; }
+      @keyframes ts-cut { to { width: 100%; } }
+      @keyframes ts-fade { to { opacity: 0.45; transform: scale(0.85); } }
+      @keyframes ts-pop { to { opacity: 1; transform: scale(1); } }
+      @media (prefers-reduced-motion: reduce) {
+        #tsEarlyPopup .ts-cut { width: 100%; animation: none !important; }
+        #tsEarlyPopup .ts-new { opacity: 1; transform: none; animation: none !important; }
+        #tsEarlyPopup .ts-old { opacity: 0.45; animation: none !important; }
+      }
+    </style>
+    <!-- EARLY BIRD POPUP: opens after a short delay, once per visit -->
+    <div id="tsEarlyPopup" class="hidden fixed inset-0 z-[1000] items-center justify-center bg-slate-900/50 px-5" role="dialog" aria-modal="true" aria-labelledby="tsEarlyTitle">
+      <div class="relative w-full max-w-md rounded-3xl border border-purple-200 bg-gradient-to-br from-purple-50 to-indigo-50 p-8 text-center shadow-xl">
+        <button id="tsEarlyClose" type="button" aria-label="Close" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white border border-purple-200 text-purple-700 inline-flex items-center justify-center hover:bg-purple-50">
+          <i data-feather="x" class="w-4 h-4"></i>
+        </button>
+        <h2 id="tsEarlyTitle" class="text-2xl md:text-3xl font-bold text-slate-900">Early Bird Special</h2>
+        <p class="mt-1 text-sm font-semibold text-slate-500">Ends November 12</p>
+
+        <div class="mt-5 flex items-end justify-center gap-5">
+          <div class="ts-old relative text-4xl md:text-5xl font-bold text-slate-400">
+            $75
+            <span class="ts-cut absolute left-0 top-1/2 h-1 rounded-full bg-red-500"></span>
+          </div>
+          <div class="ts-new text-5xl md:text-6xl font-extrabold text-purple-700">$50</div>
+        </div>
+        <p class="mt-1 text-sm font-semibold text-slate-600">per day</p>
+
+        <p class="mt-6 text-slate-700">Use code</p>
+        <div class="mt-2 inline-block rounded-2xl bg-white border border-purple-200 px-6 py-3 text-2xl font-bold tracking-wide text-purple-700">EARLYBIRD</div>
+        <p class="mt-2 text-slate-700">at checkout</p>
+
+        <a id="tsEarlySignup" href="#signup" class="mt-6 hc-btn hc-btn-primary px-7 py-4 inline-flex items-center gap-2">
+          Sign Up Now <i data-feather="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+
+    <script>
+      // Early bird popup. Skipped after the early bird ends and once it has been seen.
+      (function () {
+        var popup = document.getElementById("tsEarlyPopup");
+        if (!popup) return;
+        var KEY = "hcTsEarlyPopupSeen";
+        var DELAY_MS = 20000;
+        if (new Date() >= new Date(2026, 10, 13)) return;
+        try { if (sessionStorage.getItem(KEY) === "1") return; } catch (err) {}
+
+        function open() {
+          popup.classList.remove("hidden");
+          popup.classList.add("flex");
+          try { sessionStorage.setItem(KEY, "1"); } catch (err) {}
+          if (window.feather) window.feather.replace();
+        }
+        function close() {
+          popup.classList.add("hidden");
+          popup.classList.remove("flex");
+        }
+        document.getElementById("tsEarlyClose").addEventListener("click", close);
+        document.getElementById("tsEarlySignup").addEventListener("click", close);
+        popup.addEventListener("click", function (e) { if (e.target === popup) close(); });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && !popup.classList.contains("hidden")) close();
+        });
+        setTimeout(open, DELAY_MS);
+      })();
+
+      // Tournament sign up forms, one per day. Self-contained so js/main.js stays untouched.
+      (function () {
+        // js/main.js scrolls in-page links 500px past their target, so the sign up and
+        // schedule buttons would land in the wrong place. This listens first, on the whole
+        // page (so it also covers buttons lower down), and handles them itself.
+        document.addEventListener("click", function (e) {
+          var a = e.target.closest && e.target.closest('a[href^="#"]');
+          if (!a) return;
+          var id = a.getAttribute("href");
+          if (!id || id === "#") return;
+          var target = document.getElementById(id.slice(1));
+          if (!target) return;
+          e.preventDefault();
+          e.stopPropagation();
+          // Buttons inside the early bird popup also close it
+          var pop = document.getElementById("tsEarlyPopup");
+          if (pop && !pop.classList.contains("hidden")) {
+            pop.classList.add("hidden");
+            pop.classList.remove("flex");
+          }
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, true);
+
+        var form = document.getElementById("tournamentSignupForm");
+        if (!form) return;
+        var thanks = document.getElementById("tournamentSignupThanks");
+        var errorMsg = document.getElementById("tournamentSignupError");
+        var opened = Date.now();
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          thanks.classList.add("hidden");
+          errorMsg.classList.add("hidden");
+
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+          var picked = form.querySelector("input[name='day']:checked");
+          var checkout = picked ? picked.getAttribute("data-checkout") : "";
+          if (!checkout || checkout.indexOf("REPLACE_WITH") !== -1 ||
+              form.action.indexOf("REPLACE_WITH") !== -1 ||
+              form.elements.token.value.indexOf("REPLACE_WITH") !== -1) {
+            errorMsg.classList.remove("hidden");
+            return;
+          }
+
+          form.elements.formElapsed.value = Math.round((Date.now() - opened) / 1000);
+          var btn = form.querySelector("button[type='submit']");
+          if (btn) btn.disabled = true;
+
+          fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json" }
+          })
+            .then(function (res) {
+              return res.json().catch(function () { return { ok: res.ok }; });
+            })
+            .then(function (data) {
+              if (data && data.ok) {
+                thanks.classList.remove("hidden");
+                // Straight to the right ticket: Saturday, Sunday, or both days
+                setTimeout(function () { window.location.href = checkout; }, 1200);
+              } else {
+                errorMsg.classList.remove("hidden");
+                if (btn) btn.disabled = false;
+              }
+            })
+            .catch(function () {
+              errorMsg.classList.remove("hidden");
+              if (btn) btn.disabled = false;
+            });
+        });
+      })();
+    </script>
+
+    <!-- CTA -->
+    <section class="max-w-6xl mx-auto px-5 pb-4">
+      <div
+        class="rounded-3xl p-10 md:p-14 text-center
+              bg-gradient-to-r
+              from-[#c7b6ff]
+              via-[#a5b9ff]
+              to-[#cbbcff]
+              text-white shadow-xl"
+      >
+        <h2 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
+          Questions about the tournament?
+        </h2>
+
+        <p class="text-white/90 text-base md:text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+          We would love to hear from you
+        </p>
+
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+          <a href="#signup" class="inline-flex w-52 h-16 items-center justify-center bg-white text-purple-700 text-lg font-bold px-10 py-5 rounded-full shadow-l hover:scale-105 hover:shadow-2xl transition-all duration-300">
+            SIGN UP
+          </a>
+
+          <a href="contact" class="inline-flex items-center justify-center w-52 h-16 rounded-full font-bold text-lg text-white border-2 border-whitebg-transparent transition-all duration-300 hover:bg-white hover:text-purple-700 hover:scale-105">
+            CONTACT US
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+      <!-- FOOTER -->
+<footer class="mt-16">
+  <div class="bg-white/70 backdrop-blur border-t border-slate-200">
+    <div class="max-w-6xl mx-auto px-5 py-12">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
+        <!-- Column 1: Logo + Socials -->
+        <div class="flex flex-col items-start">
+          <a href="/" class="inline-flex items-center gap-3">
+            <img
+              src="images/logo-01.png"
+              alt="HobbyCon"
+              class="h-28 w-auto select-none"
+              draggable="false"
+            />
+          </a>
+          <div class="mt-5 flex items-center gap-2">
+            <a
+              href="https://www.instagram.com/hobbyconnyc/" target="_blank" rel="noopener"
+              aria-label="Instagram"
+              class="h-10 w-10 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center
+                     hover:-translate-y-0.5 hover:shadow-md transition"
+            >
+              <i data-feather="instagram" class="w-5 h-5 text-slate-700"></i>
+            </a>
+
+            <a
+              href="https://www.facebook.com/hobbyconnyc/" target="_blank" rel="noopener"
+              aria-label="Facebook"
+              class="h-10 w-10 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center
+                     hover:-translate-y-0.5 hover:shadow-md transition"
+            >
+              <i data-feather="facebook" class="w-5 h-5 text-slate-700"></i>
+            </a>
+
+              <a
+              href="https://www.tiktok.com/@thehobbycon" target="_blank" rel="noopener"
+              aria-label="TikTok"
+              class="h-10 w-10 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center
+                     hover:-translate-y-0.5 hover:shadow-md transition"
+            >
+              <i data-feather="video" class="w-5 h-5 text-slate-700"></i>
+            </a>
+
+              <a
+              href="https://www.eventbrite.com/o/hobbycon-121280626948" target="_blank" rel="noopener"
+              aria-label="Eventbrite"
+              class="h-10 w-10 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center
+                     hover:-translate-y-0.5 hover:shadow-md transition"
+            >
+              <i data-feather="bookmark" class="w-5 h-5 text-slate-700"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2: Location -->
+        <div>
+          <h3 class="text-sm font-bold tracking-widest text-slate-900 uppercase">
+            Location
+          </h3>
+          <p class="mt-4 text-slate-600">
+            <a
+              href="https://maps.app.goo.gl/2Cv1AwWHKehjDsn86" target="_blank" rel="noopener"
+              class="hover:text-purple-700 transition"
+            >
+              New York, NY
+            </a>
+          </p>
+          <p class="mt-2 text-sm text-slate-500">
+            Rotating Venues
+          </p>
+        </div>
+
+        <!-- Column 3: Links -->
+        <div>
+          <h3 class="text-sm font-bold tracking-widest text-slate-900 uppercase">
+            Links
+          </h3>
+          <ul class="mt-4 space-y-2 text-slate-600">
+            <li><a href="news" class="hover:text-purple-700 transition">Highlights</a></li>
+            <li><a href="community" class="hover:text-purple-700 transition">Community</a></li>
+            <li><a href="vendors" class="hover:text-purple-700 transition">Vendors</a></li>
+            <li><a href="retreats" class="hover:text-purple-700 transition">Retreats</a></li>
+            <li><a href="mahjong-tournament" class="hover:text-purple-700 transition">Mahjong Tournament</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Policies -->
+        <div>
+          <h3 class="text-sm font-bold tracking-widest text-slate-900 uppercase">
+            Policies
+          </h3>
+          <ul class="mt-4 space-y-2 text-slate-600">
+            <li><a href="terms" class="hover:text-purple-700 transition">Terms &amp; Conditions</a></li>
+            <li><a href="privacy" class="hover:text-purple-700 transition">Privacy Policy</a></li>
+            <li><a href="refund-policy" class="hover:text-purple-700 transition">Refund Policy</a></li>
+            <li><a href="shipping-policy" class="hover:text-purple-700 transition">Shipping Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 5: Contact -->
+        <div>
+          <h3 class="text-sm font-bold tracking-widest text-slate-900 uppercase">
+            Contact
+          </h3>
+
+          <div class="mt-4 space-y-3 text-slate-600">
+            <div class="flex items-center gap-3">
+              <span class="h-9 w-9 flex-shrink-0 rounded-2xl bg-purple-50 border border-purple-200 flex items-center justify-center">
+                <i data-feather="mail" class="w-4 h-4 text-purple-700"></i>
+              </span>
+              <a href="mailto:info@hobbycon.com" class="hover:text-purple-700 transition min-w-0">
+                info@hobbycon.com
+              </a>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <span class="h-9 w-9 flex-shrink-0 rounded-2xl bg-purple-50 border border-purple-200 flex items-center justify-center">
+                <i data-feather="phone" class="w-4 h-4 text-purple-700"></i>
+              </span>
+              <a href="tel:6318314843" class="hover:text-purple-700 transition min-w-0">
+                (631) 831-4843
+              </a>
+            </div>
+
+            <a href="contact" class="inline-flex items-center gap-2 text-sm font-semibold text-purple-700 hover:text-purple-900 transition">
+              Contact Us <i data-feather="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="mt-2 pt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+        <div class="text-sm text-slate-500">
+          © <span id="year"></span> HobbyCon. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+    <!-- Keep your existing script setup -->
+    <script>
+      feather.replace();
+    </script>
+    <script src="js/main.js"></script>
+    <script src="js/puzzle.js"></script>
+  </body>
+</html>
