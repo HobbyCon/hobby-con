@@ -25,7 +25,7 @@
 
     <meta
       name="description"
-      content="Mahjong Social Tournament, Saturday December 12 and Sunday December 13, 2026, Setauket, NY. Early bird tickets $50 per day."
+      content="Mahjong Social Tournament, Saturday December 12 and Sunday December 13, 2026, Setauket, NY. Tickets $75 per day."
     />
 
     <!-- Social / Open Graph -->
@@ -35,7 +35,7 @@
     />
     <meta
       property="og:description"
-      content="Mahjong Social Tournament, Saturday December 12 and Sunday December 13, 2026, Setauket, NY. Early bird tickets $50 per day."
+      content="Mahjong Social Tournament, Saturday December 12 and Sunday December 13, 2026, Setauket, NY. Tickets $75 per day."
     />
     <meta
       property="og:image"
@@ -53,7 +53,7 @@
     />
     <meta
       name="twitter:description"
-      content="Mahjong Social Tournament, Saturday December 12 and Sunday December 13, 2026, Setauket, NY. Early bird tickets $50 per day."
+      content="Mahjong Social Tournament, Saturday December 12 and Sunday December 13, 2026, Setauket, NY. Tickets $75 per day."
     />
     <meta
       name="twitter:image"
@@ -213,7 +213,7 @@
           <div class="lg:col-span-5 grid gap-3">
             <div class="rounded-2xl bg-white border border-slate-200 p-4">
               <div class="text-xs text-slate-500">PRICE</div>
-              <div class="mt-1 font-semibold text-slate-900">Only $50 per day by using code <span class="text-purple-700">EARLYBIRD</span> at checkout</div>
+              <div class="mt-1 font-semibold text-slate-900">$75 per day</div>
               <div class="text-sm text-slate-600">Limited seats</div>
             </div>
             <div class="rounded-2xl bg-white border border-slate-200 p-4">
@@ -633,10 +633,8 @@
             <h3 class="font-bold text-lg text-slate-900">Pricing</h3>
           </div>
           <div class="space-y-2">
-            <p class="text-xl font-bold text-slate-900">EARLY BIRD: $50 per day</p>
-            <p class="text-xl font-bold text-slate-900">REGULAR: $75 per day</p>
+            <p class="text-xl font-bold text-slate-900">$75 per day</p>
           </div>
-          <p class="mt-3 text-sm text-slate-600">Early bird ends November 12</p>
         </div>
 
         <div class="hc-card bg-white border border-slate-200 rounded-3xl shadow-sm p-6 md:p-7">
@@ -799,79 +797,7 @@
       </div>
     </section>
 
-    <style>
-      /* Early bird popup: the $75 is cut, then $50 pops in. Replays each time it opens. */
-      #tsEarlyPopup .ts-cut { width: 0; }
-      #tsEarlyPopup .ts-new { opacity: 0; transform: scale(0.6); }
-      #tsEarlyPopup.flex .ts-cut { animation: ts-cut 0.7s ease-out 0.5s forwards; }
-      #tsEarlyPopup.flex .ts-old { animation: ts-fade 0.5s ease-out 1.2s forwards; }
-      #tsEarlyPopup.flex .ts-new { animation: ts-pop 0.6s cubic-bezier(0.2, 1.4, 0.4, 1) 1.5s forwards; }
-      @keyframes ts-cut { to { width: 100%; } }
-      @keyframes ts-fade { to { opacity: 0.45; transform: scale(0.85); } }
-      @keyframes ts-pop { to { opacity: 1; transform: scale(1); } }
-      @media (prefers-reduced-motion: reduce) {
-        #tsEarlyPopup .ts-cut { width: 100%; animation: none !important; }
-        #tsEarlyPopup .ts-new { opacity: 1; transform: none; animation: none !important; }
-        #tsEarlyPopup .ts-old { opacity: 0.45; animation: none !important; }
-      }
-    </style>
-    <!-- EARLY BIRD POPUP: opens after a short delay, once per visit -->
-    <div id="tsEarlyPopup" class="hidden fixed inset-0 z-[1000] items-center justify-center bg-slate-900/50 px-5" role="dialog" aria-modal="true" aria-labelledby="tsEarlyTitle">
-      <div class="relative w-full max-w-md rounded-3xl border border-purple-200 bg-gradient-to-br from-purple-50 to-indigo-50 p-8 text-center shadow-xl">
-        <button id="tsEarlyClose" type="button" aria-label="Close" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white border border-purple-200 text-purple-700 inline-flex items-center justify-center hover:bg-purple-50">
-          <i data-feather="x" class="w-4 h-4"></i>
-        </button>
-        <h2 id="tsEarlyTitle" class="text-2xl md:text-3xl font-bold text-slate-900">Early Bird Special</h2>
-        <p class="mt-1 text-sm font-semibold text-slate-500">Ends November 12</p>
-
-        <div class="mt-5 flex items-end justify-center gap-5">
-          <div class="ts-old relative text-4xl md:text-5xl font-bold text-slate-400">
-            $75
-            <span class="ts-cut absolute left-0 top-1/2 h-1 rounded-full bg-red-500"></span>
-          </div>
-          <div class="ts-new text-5xl md:text-6xl font-extrabold text-purple-700">$50</div>
-        </div>
-        <p class="mt-1 text-sm font-semibold text-slate-600">per day</p>
-
-        <p class="mt-6 text-slate-700">Use code</p>
-        <div class="mt-2 inline-block rounded-2xl bg-white border border-purple-200 px-6 py-3 text-2xl font-bold tracking-wide text-purple-700">EARLYBIRD</div>
-        <p class="mt-2 text-slate-700">at checkout</p>
-
-        <a id="tsEarlySignup" href="#signup" class="mt-6 hc-btn hc-btn-primary px-7 py-4 inline-flex items-center gap-2">
-          Sign Up Now <i data-feather="arrow-right" class="w-4 h-4"></i>
-        </a>
-      </div>
-    </div>
-
     <script>
-      // Early bird popup. Skipped after the early bird ends and once it has been seen.
-      (function () {
-        var popup = document.getElementById("tsEarlyPopup");
-        if (!popup) return;
-        var KEY = "hcTsEarlyPopupSeen";
-        var DELAY_MS = 20000;
-        if (new Date() >= new Date(2026, 10, 13)) return;
-        try { if (sessionStorage.getItem(KEY) === "1") return; } catch (err) {}
-
-        function open() {
-          popup.classList.remove("hidden");
-          popup.classList.add("flex");
-          try { sessionStorage.setItem(KEY, "1"); } catch (err) {}
-          if (window.feather) window.feather.replace();
-        }
-        function close() {
-          popup.classList.add("hidden");
-          popup.classList.remove("flex");
-        }
-        document.getElementById("tsEarlyClose").addEventListener("click", close);
-        document.getElementById("tsEarlySignup").addEventListener("click", close);
-        popup.addEventListener("click", function (e) { if (e.target === popup) close(); });
-        document.addEventListener("keydown", function (e) {
-          if (e.key === "Escape" && !popup.classList.contains("hidden")) close();
-        });
-        setTimeout(open, DELAY_MS);
-      })();
-
       // Tournament sign up forms, one per day. Self-contained so js/main.js stays untouched.
       (function () {
         // js/main.js scrolls in-page links 500px past their target, so the sign up and
@@ -886,12 +812,6 @@
           if (!target) return;
           e.preventDefault();
           e.stopPropagation();
-          // Buttons inside the early bird popup also close it
-          var pop = document.getElementById("tsEarlyPopup");
-          if (pop && !pop.classList.contains("hidden")) {
-            pop.classList.add("hidden");
-            pop.classList.remove("flex");
-          }
           target.scrollIntoView({ behavior: "smooth", block: "start" });
         }, true);
 
