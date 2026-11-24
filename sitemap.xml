@@ -3,7 +3,10 @@
   <url><loc>https://hobbycon.com/</loc><priority>1.0</priority></url>
   <url><loc>https://hobbycon.com/events</loc><priority>0.9</priority></url>
   <url><loc>https://hobbycon.com/retreats</loc><priority>0.9</priority></url>
+  <url><loc>https://hobbycon.com/mahjong-retreat</loc><priority>0.9</priority></url>
   <url><loc>https://hobbycon.com/tickets</loc><priority>0.9</priority></url>
+  <url><loc>https://hobbycon.com/competitions</loc><priority>0.8</priority></url>
+  <url><loc>https://hobbycon.com/opportunities</loc><priority>0.7</priority></url>
   <url><loc>https://hobbycon.com/vendors</loc><priority>0.8</priority></url>
   <url><loc>https://hobbycon.com/community</loc><priority>0.8</priority></url>
   <url><loc>https://hobbycon.com/contact</loc><priority>0.7</priority></url>

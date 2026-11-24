@@ -113,12 +113,28 @@
               group-hover:opacity-100 group-hover:pointer-events-auto
               transition-opacity duration-150">
               <a href="retreats" class="block px-4 py-2 hover:bg-gray-100">Retreats</a>
-              <a href="mahjong-tournament" class="block px-4 py-2 hover:bg-gray-100">Mahjong Tournament</a>
+              <a href="competitions" class="block px-4 py-2 hover:bg-gray-100">Competitions</a>
               <a href="events" class="block px-4 py-2 hover:bg-gray-100 rounded-b-lg">HobbyClubs!</a>
             </div>
           </div>
+          <!-- RESOURCES DROPDOWN -->
+          <div class="relative group">
+            <button class="nav-link font-semibold flex items-center gap-1">
+              Resources
+              <i data-feather="chevron-down" class="w-4 h-4"></i>
+            </button>
+
+            <div class="absolute left-0 top-full mt-0
+              w-56 bg-white shadow-lg rounded-lg z-[999]
+              opacity-0 pointer-events-none
+              group-hover:opacity-100 group-hover:pointer-events-auto
+              transition-opacity duration-150">
+              <a href="vendors" class="block px-4 py-2 hover:bg-gray-100">Vendors</a>
+              <a href="news" class="block px-4 py-2 hover:bg-gray-100">Highlights</a>
+              <a href="opportunities" class="block px-4 py-2 hover:bg-gray-100 rounded-b-lg">Opportunities</a>
+            </div>
+          </div>
           <a class="nav-link font-semibold hover:text-slate-900" href="community">Community</a>
-          <a class="nav-link font-semibold hover:text-slate-900" href="vendors">Vendors</a>
           <a class="nav-link font-semibold hover:text-slate-900" href="contact">Contact</a>
           <a href="tickets" class="hc-btn hc-btn-primary px-7 py-3 text-base font-semibold text-white rounded-full">
             Get Tickets
@@ -153,13 +169,28 @@
 
       <div class="mt-2 pr-3 border-r border-slate-200 flex flex-col items-end gap-1">
         <a href="retreats" class="w-fit px-3 py-2 transition">Retreats</a>
-        <a href="mahjong-tournament" class="w-fit px-3 py-2 transition">Mahjong Tournament</a>
+        <a href="competitions" class="w-fit px-3 py-2 transition">Competitions</a>
         <a href="events" class="w-fit px-3 py-2 transition">HobbyClubs!</a>
       </div>
     </details>
 
+    <!-- Resources dropdown -->
+    <details class="w-fit">
+      <summary class="list-none cursor-pointer select-none font-semibold flex items-center justify-end gap-2 py-2 px-3 transition">
+        <span class="m-underline">
+          <span>Resources</span>
+          <i data-feather="chevron-down" class="w-4 h-4"></i>
+        </span>
+      </summary>
+
+      <div class="mt-2 pr-3 border-r border-slate-200 flex flex-col items-end gap-1">
+        <a href="vendors" class="w-fit px-3 py-2 transition">Vendors</a>
+        <a href="news" class="w-fit px-3 py-2 transition">Highlights</a>
+        <a href="opportunities" class="w-fit px-3 py-2 transition">Opportunities</a>
+      </div>
+    </details>
+
       <a class="w-fit font-semibold py-2 px-3 transition" href="community">Community</a>
-      <a class="w-fit font-semibold py-2 px-3 transition" href="vendors">Vendors</a>
       <a class="w-fit font-semibold py-2 px-3 transition" href="contact">Contact</a>
 
       <!-- CTA (not full width) -->
@@ -542,7 +573,6 @@
             <li><a href="community" class="hover:text-purple-700 transition">Community</a></li>
             <li><a href="vendors" class="hover:text-purple-700 transition">Vendors</a></li>
             <li><a href="retreats" class="hover:text-purple-700 transition">Retreats</a></li>
-            <li><a href="mahjong-tournament" class="hover:text-purple-700 transition">Mahjong Tournament</a></li>
           </ul>
         </div>
 
