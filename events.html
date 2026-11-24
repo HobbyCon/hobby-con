@@ -100,15 +100,14 @@
               group-hover:opacity-100 group-hover:pointer-events-auto
               transition-opacity duration-150"
             >
-              <a href="retreats" class="block px-4 py-2 hover:bg-gray-100"
-                >Retreats</a
+              <a href="events" class="block px-4 py-2 hover:bg-gray-100"
+                >HobbyClubs!</a
               >
               <a href="competitions" class="block px-4 py-2 hover:bg-gray-100">Competitions</a>
-              <a href="club-fair" class="block px-4 py-2 hover:bg-gray-100">Club Fair</a>
               <a
-                href="events"
+                href="retreats"
                 class="block px-4 py-2 hover:bg-gray-100 rounded-b-lg"
-                >HobbyClubs!</a
+                >Retreats</a
               >
             </div>
           </div>
@@ -125,9 +124,9 @@
               opacity-0 pointer-events-none
               group-hover:opacity-100 group-hover:pointer-events-auto
               transition-opacity duration-150">
-              <a href="vendors" class="block px-4 py-2 hover:bg-gray-100">Vendors</a>
               <a href="news" class="block px-4 py-2 hover:bg-gray-100">Highlights</a>
-              <a href="opportunities" class="block px-4 py-2 hover:bg-gray-100 rounded-b-lg">Opportunities</a>
+              <a href="opportunities" class="block px-4 py-2 hover:bg-gray-100">Opportunities</a>
+              <a href="vendors" class="block px-4 py-2 hover:bg-gray-100 rounded-b-lg">Vendors</a>
             </div>
           </div>
           <a class="nav-link font-semibold hover:text-slate-900" href="community"
@@ -178,12 +177,11 @@
               <div
                 class="mt-2 pr-3 border-r border-slate-200 flex flex-col items-end gap-1"
               >
-                <a href="retreats" class="w-fit px-3 py-2 transition">Retreats</a>
-                <a href="competitions" class="w-fit px-3 py-2 transition">Competitions</a>
-                <a href="club-fair" class="w-fit px-3 py-2 transition">Club Fair</a>
                 <a href="events" class="w-fit px-3 py-2 transition"
                   >HobbyClubs!</a
                 >
+                <a href="competitions" class="w-fit px-3 py-2 transition">Competitions</a>
+                <a href="retreats" class="w-fit px-3 py-2 transition">Retreats</a>
               </div>
             </details>
 
@@ -197,9 +195,9 @@
               </summary>
 
               <div class="mt-2 pr-3 border-r border-slate-200 flex flex-col items-end gap-1">
-                <a href="vendors" class="w-fit px-3 py-2 transition">Vendors</a>
                 <a href="news" class="w-fit px-3 py-2 transition">Highlights</a>
                 <a href="opportunities" class="w-fit px-3 py-2 transition">Opportunities</a>
+                <a href="vendors" class="w-fit px-3 py-2 transition">Vendors</a>
               </div>
             </details>
 
@@ -238,65 +236,41 @@
         <!-- Cards -->
         <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 items-stretch">
 
-          <!-- Featured: Speed Puzzle Club -->
-          <div class="hc-card bg-white border border-slate-200 rounded-3xl shadow-sm p-6 md:p-7">
+          <!-- Featured: Game Night -->
+          <div class="hc-card bg-white border border-slate-200 rounded-3xl shadow-sm p-6 md:p-7 flex flex-col">
             <div class="flex items-center justify-between gap-4">
               <div class="min-w-0">
                 <div class="text-sm text-slate-500">Featured Experience</div>
                 <div class="mt-1 text-xl font-bold text-slate-900">
-                 Speed Puzzle Club
+                 Game Night
                 </div>
               </div>
 
               <div
                 class="shrink-0 px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-purple-700 text-xs font-semibold"
               >
-                12:00PM • November 15
+                January 15
               </div>
             </div>
 
             <p class="mt-4 text-sm text-slate-600 leading-relaxed">
-              We’re hosting a <span class="font-semibold">Speed Puzzle Competition</span> in Manhattan!
+              We’re hosting a <span class="font-semibold">Game Night</span>!
             </p>
 
-            <a
-              href="https://www.eventbrite.com/e/speed-puzzle-club-presented-by-hobbycon-tickets-2000642420335?aff=oddtdtcreator"
-              target="_blank"
-              class="mt-5 block overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 hover:shadow-lg transition-shadow"
-            >
-              <img
-                src="images/2026-11-15-speedpuzzle.webp"
-                alt="Speed Puzzle Club Flyer"
-                class="w-full h-auto object-cover"
-                loading="lazy"
-              />
-            </a>
-
-            <div class="mt-6 grid gap-3">
-              <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4">
-                <div class="text-xs text-slate-500">LOCATION</div>
-                <div class="mt-1 font-semibold text-slate-800">Brookfield Place • Hudson Eats</div>
-              </div>
-
-              <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4">
-                <div class="text-xs text-slate-500">WHAT TO EXPECT</div>
-                <div class="mt-1 font-semibold text-slate-800">
-                  Competitive Play • Casual Viewing
-                </div>
-              </div>
+            <div class="mt-5 aspect-[4/5] w-full rounded-2xl border border-slate-200 bg-gradient-to-br from-purple-50 to-indigo-50 flex flex-col items-center justify-center gap-3">
+              <i data-feather="clock" class="w-12 h-12 text-purple-400"></i>
+              <div class="text-sm font-semibold text-purple-700">Flyer Coming Soon</div>
             </div>
 
-            <a
-              href="https://www.eventbrite.com/e/speed-puzzle-club-presented-by-hobbycon-tickets-2000642420335?aff=oddtdtcreator" target="_blank" rel="noopener"
-              class="mt-6 w-full inline-flex items-center justify-center gap-2
-                     rounded-full px-6 py-3 font-semibold whitespace-nowrap
-                     border-2 border-purple-400 text-purple-700
-                     transition-all duration-300
-                     hover:bg-purple-500 hover:text-white hover:border-purple-500
-                     hover:shadow-lg"
-            >
-              Buy Tickets <i data-feather="arrow-right" class="w-4 h-4"></i>
-            </a>
+            <div class="mt-auto pt-6 w-full">
+              <span
+                class="w-full inline-flex items-center justify-center gap-2
+                       rounded-full px-6 py-3 font-semibold whitespace-nowrap
+                       border-2 border-slate-200 text-slate-400 cursor-default select-none"
+              >
+                Details Coming Soon
+              </span>
+            </div>
           </div>
 
           <!-- Featured: Speed Puzzle Party -->
@@ -413,6 +387,67 @@
   <h2 class="text-lg font-semibold text-slate-400 uppercase tracking-widest mb-6">Previous Events</h2>
   <div class="grid gap-6 md:grid-cols-2 items-start">
     <!-- paste your hc-card divs here -->
+
+          <!-- Featured: Speed Puzzle Club -->
+          <div class="hc-card past-event bg-white border border-slate-200 rounded-3xl shadow-sm p-6 md:p-7">
+            <div class="flex items-center justify-between gap-4">
+              <div class="min-w-0">
+                <div class="text-sm text-slate-500">Featured Experience</div>
+                <div class="mt-1 text-xl font-bold text-slate-900">
+                 Speed Puzzle Club
+                </div>
+              </div>
+
+              <div
+                class="shrink-0 px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-purple-700 text-xs font-semibold"
+              >
+                12:00PM • November 15
+              </div>
+            </div>
+
+            <p class="mt-4 text-sm text-slate-600 leading-relaxed">
+              We’re hosting a <span class="font-semibold">Speed Puzzle Competition</span> in Manhattan!
+            </p>
+
+            <a
+              href="https://www.eventbrite.com/e/speed-puzzle-club-presented-by-hobbycon-tickets-2000642420335?aff=oddtdtcreator"
+              target="_blank"
+              class="mt-5 block overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 hover:shadow-lg transition-shadow"
+            >
+              <img
+                src="images/2026-11-15-speedpuzzle.webp"
+                alt="Speed Puzzle Club Flyer"
+                class="w-full h-auto object-cover"
+                loading="lazy"
+              />
+            </a>
+
+            <div class="mt-6 grid gap-3">
+              <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4">
+                <div class="text-xs text-slate-500">LOCATION</div>
+                <div class="mt-1 font-semibold text-slate-800">Brookfield Place • Hudson Eats</div>
+              </div>
+
+              <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4">
+                <div class="text-xs text-slate-500">WHAT TO EXPECT</div>
+                <div class="mt-1 font-semibold text-slate-800">
+                  Competitive Play • Casual Viewing
+                </div>
+              </div>
+            </div>
+
+            <a
+              href="https://www.eventbrite.com/e/speed-puzzle-club-presented-by-hobbycon-tickets-2000642420335?aff=oddtdtcreator" target="_blank" rel="noopener"
+              class="mt-6 w-full inline-flex items-center justify-center gap-2
+                     rounded-full px-6 py-3 font-semibold whitespace-nowrap
+                     border-2 border-purple-400 text-purple-700
+                     transition-all duration-300
+                     hover:bg-purple-500 hover:text-white hover:border-purple-500
+                     hover:shadow-lg"
+            >
+              Buy Tickets <i data-feather="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
           <!-- Featured: Food Crawl Club -->
           <div class="hc-card past-event bg-white border border-slate-200 rounded-3xl shadow-sm p-6 md:p-7">
             <div class="flex items-center justify-between gap-4">
